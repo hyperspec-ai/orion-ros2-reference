@@ -1,0 +1,39 @@
+/**
+\page rtcm_config RtcmNode Configuration
+\include system_config.json
+
+\section RtcmNode RtcmNode
+The Configuration for the RTCM has the following standard fields in the nodes art of the config:
+
+- name : name of node instance (string)
+- execution_location : name of execution location for example INT_X_1, the location name is defined in the base config of each ConfigNode instance (string)
+- execution_context : name of a execution_context, if more tha one node sharing the same context they are communicating via intra process communication
+- package : package name from package.xml, in this case rtcm (string) 
+- node : node name, used also to identify libs etc., in this case RtcmNode (string)
+- package_location : location were the reditstributale package can befound as URL (string)
+- version : Currently "1.0" (string)
+- finger_print : md5 finger print of redistributable package (string)
+- description : freed documentation field (string)
+
+Parameters neccesary for RtcmNode:
+- ntrip_host: host of NTRIP Caster (string)
+- ntrip_port: tcp port of NTRIP caster (int)
+- ntrip_mountpoint: Ntrip Mountpoint to be used (string)
+- ntrip_user: user name (string)
+- ntrip_password: password (string) 
+
+\section RtcmMsg RtcmMsg
+The Configuration for the RtcmMsg has the following standard fields in the msg_libs art of the config:
+
+- name : name of message instance, doesn't have any use (string)
+- execution_location : name of execution location for example INT_X_1, the location name is defined in the base config of each ConfigNode instance (string)
+- package : package name from package.xml, in this case rtcm_msgs (string) 
+- message : messages name, used also to identify libs etc., in this case rtcm_msgs (string)
+- package_location : location were the reditstributale package can befound as URL (string)
+- version : Currently "1.0" (string)
+- finger_print : md5 finger print of redistributable package (string)
+- description : freed documentation field (string)
+
+
+
+**/

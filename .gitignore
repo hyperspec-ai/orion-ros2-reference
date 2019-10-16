@@ -1,0 +1,13 @@
+*.DS_Store
+build*/
+
+**/data/lib_install/*
+/*.tar
+**/install/*/
+**/log/
+**/ext_lib/*
+**/msg_lib/*
+**/doc/latex
+**/doc/html
+*.so
+

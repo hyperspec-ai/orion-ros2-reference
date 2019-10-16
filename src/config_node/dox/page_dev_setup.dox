@@ -1,0 +1,47 @@
+/**
+\page dev_setup Development Environment Setup
+\section dev_setup_env Setting environmental variables and eth interface
+
+In the /etc/environment file a entry for WS_KROS must be added pointing to the orion-ros2-config
+repository.
+
+Example Entry:
+ <code>
+  WS_KROS=/home/marcus/Code/orion-ros2-config/
+ </code>
+ 
+ If the infrastructure docker container should be used together with a Xavier the
+ 98-net-orion.rules must be adapted according the used network interface used for the Xavier
+ connection. This rule renames the corepsonding ethernet adapter to
+ Example for a USB Network adapter /dev/eth_orion and is used in scripts to brige it to the docker
+ network
+ 
+ <code>
+  SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*",
+  ATTRS{idVendor}=="0bda",ATTRS{idProduct}=="8153",, ATTR{type}=="1", KERNEL=="eth*",
+  NAME="eth_orion"
+  </code>
+\section dev_setup_docker Setup docker dev environment
+
+Precondition docker must be installed
+Execute from the docker directory of this repository the
+build_image.sh.
+<code>
+ ./buildimage.sh
+ </code>
+ 
+ from the docker directory of this repository. Takes some time and uses also around 6GB of disk
+ space.
+ 
+ It creates two images:
+     - orion:dev full ros2 build and execution environment, this will be also used in future to do
+       cross compilation for Xavier
+     - orion:infra nginx and mosquito installation
+ 
+ and a network called orion_nw with subnet 172.18.0.0/24 and the corresponding bridge (orion_br),
+ in case a network device eth_orion is available it will be also added to this bridge, that can be
+ also done manually by brctl addif orion_br interface_name. (see also Setup of Xavier for
+ development)
+ 
+\image html dev_env.png
+**/

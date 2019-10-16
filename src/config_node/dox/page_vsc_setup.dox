@@ -1,0 +1,11 @@
+/**
+\page vsc_setup Visual Studio Code Setup
+\section vsc_extensions Helpfull extensions for VSC
+The following extensions helps to support the development:
+- C/C++ InneliSense
+- Clang-Format
+- Docker 
+- Docker Workspace
+- Doxygen (Language support)
+- GitLens
+**/

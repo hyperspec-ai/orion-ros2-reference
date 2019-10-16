@@ -1,0 +1,32 @@
+/**
+\mainpage Orion ConfigNode
+ This node handles update, configuration and monitoring of excuted nodes.
+
+How to work:
+- \ref gitlab_workflow
+- \ref coding_guidelines
+
+
+How to setup:
+
+The how tos expect that the following preconditions are met:
+- Running Ubunutu/Debian Linux (the build enviroment for ROS2 will be inside the docker, so 18.04LTS need not to be enforced)
+- Visual Studio Code is installed
+- git client is installed
+- doxygen installed (should be shifted in future also to container)
+
+How to:
+- \ref vsc_setup
+- \ref config_node_setup
+- \ref dev_setup (also linked in \ref config_node_setup)
+- \ref gen_node_setup
+- \ref setup_own_node
+- \ref setup_xavier
+
+How to Configure:
+- \ref base_conf_ex
+- \ref sys_conf_ex
+- \ref config_process
+
+Implementation of the basic ROS2 Node of the config::ConfigNode.
+ **/

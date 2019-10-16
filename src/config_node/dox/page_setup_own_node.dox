@@ -1,0 +1,24 @@
+/**
+\page setup_own_node How to setup an own node
+
+The orion-ros2-rtcm repo is a quite good base to start
+
+\section own_general General stuff:
+-# Care about coding and documentation as defined
+-# Define messages always in a seperate repo so it can be reused by different nodes, add them as sumbodule
+-# Nodes must support the Lifecyle Management https://design.ros2.org/articles/node_lifecycle.html , so it must be derived from rclcpp_lifecycle::LifecycleNode
+-# CPP/HPP-File: Constructor takes and forwards rclcpp::NodeOptions to Node constructor
+-# CPP File: RCLCPP_COMPONENTS_REGISTER_NODE(NodeNamepsace::NodeClassName) is called at the very end of the file
+\section own_how How to proceed
+-# Copy an existing node and use it as template
+-# Rename node dir in src 
+-# Adapt the package.xml and the CMakeList.txt in the node dir according to the new names of the node.
+    package.xml:
+    \include expackage.xml
+    CMakeList.txt:
+    \include exCMakeLists.txt
+-# add neccessary sub modules as docker dir and own messages
+-# Adapt deploy scripts (arm/pc)
+\include deploy_all_pc.sh
+
+**/

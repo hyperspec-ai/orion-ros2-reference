@@ -1,0 +1,56 @@
+/**
+\page config_process Config Process
+The Configuration and Monitoring Node instantiate the rest of the nodes of the Orion Vehicle
+Setup.
+
+The setup can came initially from a config file, but can also be reloaded via mqtt.
+\image html conf_overview.png
+The basic idea is that all components that are running in the scope of the used hardware are
+configurable through the configuration file. This includes the topics, but also the instantiation
+of the nodes.
+
+As this is a distributed system the instantiation requires on each hardware a running in one ROS2
+System a Configuration and Monitoring Node. Each Configuration and Monitoring Node needs the
+following parameters to work properly (loaded from a hardware local config file):
+
+- Vehicle Name
+- Execution Location on Vehicle (for example) (a Execution location can be physical as a
+Xavier but also Virtual as a Container or VM, per execution location one ConfigNode must be
+deployed )
+        - INT_X_1 (Xavier 1 on Carrier Board)
+        - INT_X_2 (Xavier 2 on Carrier Board)
+        - EXT_X_1(Externally connected Xavier over Etheret)
+        - INT_X_2_CONTAINER_1 (e.g.)
+- MQTT Broker Address and Credentials
+
+
+For each node defined in the configuration, the following information must be available (sample
+for the camera node in brackets)
+- Execution Location (INT_X_1 etc.)
+- Execution Context (camera) (Started in a common process, started as an separate process,
+started as a docker container) 
+- Package and Name of the Node (camera_flir, camera) 
+- Name also use to build the topic (flir_camera) Download location of the package (tar.gz) Version of the Package MD5
+- Fingerprint of the package (tar.gz) If it is a sensor the sensor_token to identify the sensor
+Configuration of the sensor
+
+
+Ideal would be to have a graphical editor to define the pipeline within ROS2, that is validating
+automatically the all topics etc.
+
+In general, if the configuration/topics are known also ROS2 Nodes outside the configuration can
+use the system.
+
+\section inst_process Instantiation Process
+
+Preconditions:
+
+One vehicle, the base system consists over several Xaviers/PCs (Execution Location) connected via
+Ethernet or PCIe Endpoint Simulation
+
+Each Execution Location is starting with a ConfigNode that has a base configuration, optionally a
+system config loaded.
+
+The life cycle management is done via ROS2 life cycle management.
+\image html conf_process.png
+**/

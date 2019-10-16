@@ -1,0 +1,55 @@
+{
+    "vehicle": "Sally",
+    "nodes": [
+        {
+            "name": "rtk",
+            "execution_location": "INT_X_1",
+            "execution_context": "gnss",
+            "package": "rtcm",
+            "node": "RtcmNode",
+            "package_location": "http://172.18.0.11/rtcm_v1.tar.gz",
+            "version": "1.0",
+            "finger_print": "<md5 fingerprint>",
+            "description": "A RTK Correction data distribution node",
+            "parameters": [
+                {
+                    "name": "ntrip_host",
+                    "type": "string",
+                    "value": "157.97.109.112"
+                },
+                {
+                    "name": "ntrip_port",
+                    "type": "int",
+                    "value": 2101
+                },
+                {
+                    "name": "ntrip_mountpoint",
+                    "type": "string",
+                    "value": "VRS_3_2G_BE"
+                },
+                {
+                    "name": "ntrip_user",
+                    "type": "string",
+                    "value": "saposbln287-1"
+                },
+                {
+                    "name": "ntrip_password",
+                    "type": "string",
+                    "value": "gb32wm"
+                }
+            ]
+        }
+    ],
+    "msg_libs": [
+        {
+            "name": "rtcm_msgs",
+            "execution_location": "INT_X_1",
+            "package": "rtcm_msgs",
+            "message": "rtcm_msgs",
+            "package_location": "http://172.18.0.11/rtcm_msgs_v1.tar.gz",
+            "version": "1.0",
+            "finger_print": "<md5 fingerprint>",
+            "description": "A RTK Correction data distribution node"
+        }
+    ]
+}

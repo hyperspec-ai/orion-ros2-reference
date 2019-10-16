@@ -1,0 +1,11 @@
+{
+    "vehicle": "Sally",
+    "execution_location": "INT_X_1",
+    "path": "/opt/ws_kros/config/",
+    "mqtt": {
+        "host": "172.18.0.11",
+        "user": "vehicle",
+        "password": "ws8ravm4"
+    },
+    "system_config": true
+}

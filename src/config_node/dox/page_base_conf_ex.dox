@@ -1,0 +1,5 @@
+/**
+\page base_conf_ex Base Config example
+\include base_config.json Base Config
+\example base_config.json Base Config
+**/

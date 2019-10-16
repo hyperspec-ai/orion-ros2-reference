@@ -1,0 +1,100 @@
+cmake_minimum_required(VERSION 3.5)
+project(config)
+# Default to C++14
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(rclcpp_components REQUIRED)
+find_package(rclcpp_lifecycle REQUIRED)
+find_package(lifecycle_msgs REQUIRED)
+find_package(rcutils REQUIRED)
+find_package(CURL REQUIRED)
+find_package(LibArchive REQUIRED)
+find_library(PAHO_CPP_LIB NAMES libpaho-mqttpp3.so REQUIRED)
+find_library(PAHO_C_LIB NAMES libpaho-mqtt3a.so REQUIRED)
+
+
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+add_subdirectory(json)
+add_library( ConfigNode SHARED
+confignode.cpp
+configurationhandler.cpp
+executioncontext.cpp
+executionhandler.cpp
+packagedownloader.cpp
+persistancehandler.cpp
+mqttbackend.cpp
+lifecyclemanager.cpp
+  
+)
+target_include_directories(ConfigNode PRIVATE  
+  "./"
+  "./json/include"
+)
+target_link_libraries(ConfigNode
+nlohmann_json::nlohmann_json
+${LibArchive_LIBRARIES}
+${CURL_LIBRARIES}
+${PAHO_CPP_LIB}
+${PAHO_C_LIB}
+)
+
+rclcpp_components_register_nodes(ConfigNode "config::ConfigNode")
+target_compile_definitions(ConfigNode
+  PRIVATE "MINIMAL_COMPOSITION_DLL")
+
+ament_target_dependencies(ConfigNode
+  "class_loader"
+  "rclcpp"
+  "rclcpp_components"
+  "rclcpp_lifecycle"
+  "lifecycle_msgs"
+  
+  )
+
+if(NOT WIN32)
+  ament_environment_hooks(
+    "${ament_cmake_package_templates_ENVIRONMENT_HOOK_LIBRARY_PATH}"
+    )
+endif()
+
+# Executable for easy single-node debugging
+
+
+add_executable(ConfigNode_exec
+  exec_entry.cpp)
+
+target_include_directories(ConfigNode_exec PRIVATE
+  "./"
+  "./json/include"
+)
+
+target_link_libraries(ConfigNode_exec
+ConfigNode
+${LibArchive_LIBRARIES}
+)
+
+ament_target_dependencies(ConfigNode_exec
+  "rclcpp"
+  "rclcpp_components"  
+  "ConfigNode"  
+)
+
+
+install(TARGETS
+ConfigNode
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+
+install(TARGETS
+ConfigNode_exec
+  DESTINATION lib/${PROJECT_NAME})
+ament_package()

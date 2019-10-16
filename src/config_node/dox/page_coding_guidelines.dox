@@ -1,0 +1,91 @@
+/**
+\page coding_guidelines Coding Guideline
+
+
+
+\subsection merge_request Merge/Push Request
+Push Merge should only executed if minimum one other has approved it.
+
+\section style_guide Style Guide
+\subsection class_names Class Names and Files
+Class names are in CamelCase.
+Each class resists in one cpp file for the implementation and in one hpp file for the definition.
+The cpp and hpp file has the same name as the defining and implementing class, except no capitals.
+
+The maximum file size should be not over 400 NLOCs (rule of thumb).
+
+\subsection member_functions Member Functions
+
+Member functions are in snake_case.
+
+All members should be named in a way that a verb and a subject is available and specific descriptive as:
+
+<code>
+void start_recording();
+</code>
+
+\subsection member_vars Member Variables
+
+Member variables are in snake_case. Member variables must be named in a way that it is/the content clearly understandable.
+
+All member variables are starting with m_.
+
+<code>
+bool m_recoding_running
+</code>
+
+\subsection var_decl Variable deceleration
+
+In general all variables must e declared with typedefs describing the type, as uint8_t etc.
+Exceptions
+
+Exceptions are allowed:
+- rationale: this is a new code base, so the legacy argument doesn’t apply to us
+- rationale: for user facing API’s it is more idiomatic C++ to have exceptions
+- Exceptions in destructors should be explicitly avoided
+
+We should consider avoiding Exceptions if we intend to wrap the resulting API in C
+- rationale: it will make it easier to wrap in C
+- rationale: most of our dependencies in code we intend to wrap in C do not use exceptions anyways
+\subsection lambda Function-like Objects
+No restrictions on Lambda’s or std::function or std::bind
+
+\subsection boost Boost
+Boost should be avoided until absolutely required
+
+\subsection comments Comments and Doc Comments
+Use &frasl;&frasl;&frasl; and &frasl;**  comments for documentation(doxygen) purposes and &frasl;&frasl; style comments for notes and general comments
+Class and Function doxygen comments should use &frasl;&frasl;&frasl; and &frasl;**  style comments
+- rationale: these are recommended for Doxygen in  C&frasl;C++
+- rationale: Don't use comments do comment out code but use \#if 0 \#endif
+Descriptions of how the code works or notes within classes and functions should use &frasl;&frasl; style comments
+
+\subsection pointer Pointer Syntax Alignment
+Use char * c; instead of char* c; or char *c; because of this scenario char* c, *d, *e;
+
+\subsection privacy Class Privacy Keywords
+
+Do not put 1 space before public:, private:, or protected:, it is more consistent for all indentions to be a multiple of 2
+rationale: most editors don’t like indentions which are not a multiple of the (soft) tab size
+Use zero spaces before public:, private:, or protected:, or 2 spaces
+If you use 2 spaces before, indent other class statements by 2 additional spaces
+Prefer zero spaces, i.e. public:, private:, or protected: in the same column as the class
+
+\subsection nested_templates Nested Templates
+Never add whitespace to nested templates
+Prefer:
+    <code>
+         set<list<string>> (C++11 feature) to set<list<string> > or set< list<string> >
+    </code>
+
+\subsection use_braces Always use braces
+Always use braces following if, else, do, while, and for, even when the body is a single line.
+reational: opportunity for visual ambiguity and for complications due to use of macros in the body
+
+\section gen_pract General Best Practice C++ to be applied
+Please have a look at and follow:
+http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines.htmlless 
+
+**/
+
+
