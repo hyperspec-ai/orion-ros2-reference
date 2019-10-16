@@ -21,8 +21,7 @@ find_library(PAHO_CPP_LIB NAMES libpaho-mqttpp3.so REQUIRED)
 find_library(PAHO_C_LIB NAMES libpaho-mqtt3a.so REQUIRED)
 
 
-set(JSON_BuildTests OFF CACHE INTERNAL "")
-add_subdirectory(json)
+
 add_library( ConfigNode SHARED
 confignode.cpp
 configurationhandler.cpp
@@ -36,14 +35,17 @@ lifecyclemanager.cpp
 )
 target_include_directories(ConfigNode PRIVATE  
   "./"
-  "./json/include"
+  "../../common_src/"
+  "../../common_src/json/include"
 )
+add_subdirectory(../../common_src/ ../install/commonLib/lib/)
+
 target_link_libraries(ConfigNode
-nlohmann_json::nlohmann_json
 ${LibArchive_LIBRARIES}
 ${CURL_LIBRARIES}
 ${PAHO_CPP_LIB}
 ${PAHO_C_LIB}
+OrionCommon
 )
 
 rclcpp_components_register_nodes(ConfigNode "config::ConfigNode")

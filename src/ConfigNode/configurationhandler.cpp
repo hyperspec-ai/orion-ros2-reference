@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <fstream>
 #include "configurationhandler.hpp"
-#include "json/include/nlohmann/json.hpp"
+#include "nlohmann/json.hpp"
 namespace config {
 ConfigurationHandler::ConfigurationHandler(const std::string& config_path, rclcpp::Node* node) :
     m_config_path(config_path),

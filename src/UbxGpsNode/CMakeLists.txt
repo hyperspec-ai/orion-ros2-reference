@@ -19,14 +19,13 @@ find_package(rclcpp_lifecycle REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
-add_subdirectory(json)
+#add_subdirectory(json)
 add_library(UbxGpsNode SHARED
   ubxgpsnode.cpp
   ubxcfgmessage.cpp
   ubxmessage.cpp
   ubxreceivemessage.cpp
   ubxserialhandler.cpp
-  routeparser.cpp
   messages/ubxackack.cpp
   messages/ubxacknak.cpp
   messages/ubxnaveoe.cpp
@@ -37,6 +36,9 @@ add_library(UbxGpsNode SHARED
   messages/ubxusbmsgcfg.cpp
   messages/ubxusbprotcfg.cpp
 )
+
+
+
 
 rclcpp_components_register_nodes(UbxGpsNode "UbxGpsNode")
 
@@ -51,13 +53,15 @@ ament_target_dependencies(UbxGpsNode
   "lifecycle_msgs"
   "rclcpp_lifecycle"
 )
-
+add_subdirectory(../../common_src/ ../install/commonLib/lib/)
 target_include_directories(UbxGpsNode PRIVATE
   "./"
-  "./json/include"
+  "../../common_src/"
+  "../../common_src/json/include"
 )
 
 target_link_libraries(UbxGpsNode
+OrionCommon
 )
 
 

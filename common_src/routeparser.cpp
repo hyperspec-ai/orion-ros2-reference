@@ -17,9 +17,9 @@ std::string RouteParser::get_topic_by_endpoint(std::string endpoint)
             auto dests = route_entry["dst"];
             for(auto dest_info : dests)
             {
-                RCLCPP_INFO(this->get_logger(),
-                            "Found destination endpoint: %s",
-                            dest_info.dump().c_str());
+                //                RCLCPP_INFO(this->get_logger(),
+                //                            "Found destination endpoint: %s",
+                //                            dest_info.dump().c_str());
                 if((dest_info["node"].get<std::string>().compare(m_node_name) == 0) &&
                    (dest_info["endpoint"].get<std::string>().compare(endpoint) == 0))
                 {
