@@ -1,1 +1,4 @@
-{"packages":[{"package":"rtcm_msgs","type":"node","version":"1.0"},{"package":"UbxGpsNode","type":"node","version":"2.0"},{"package":"RtcmNode","type":"node","version":"1.0"}],"vehicle":"Sally"}
+{
+    "packages": [],
+    "vehicle": "Sally"
+}
