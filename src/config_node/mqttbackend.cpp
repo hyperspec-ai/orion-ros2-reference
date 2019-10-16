@@ -15,18 +15,24 @@
 #include <vector>
 #include "mqttbackend.hpp"
 #include "mqttcallback.hpp"
-namespace config
-{
+namespace config {
 MqttBackend::MqttBackend() {}
 void MqttBackend::connection_lost(const std::string& cause)
 {
+    std::ignore = cause;
     m_connected = false;
 }
 
-void MqttBackend::delivery_complete(mqtt::delivery_token_ptr tok) {}
+void MqttBackend::delivery_complete(mqtt::delivery_token_ptr tok)
+{
+    std::ignore = tok;
+}
 
-void MqttBackend::init(const std::string& host, const std::string& veh_name,
-                       const std::string& user, const std::string& passwd, MqttCallback* mqttcb)
+void MqttBackend::init(const std::string& host,
+                       const std::string& veh_name,
+                       const std::string& user,
+                       const std::string& passwd,
+                       MqttCallback* mqttcb)
 {
     assert(mqttcb != nullptr);
     m_vehicle_name = veh_name;
@@ -47,7 +53,7 @@ void MqttBackend::pub_thread()
     m_client = new mqtt::async_client(m_host, m_vehicle_name);
     m_client->set_callback(*this);
     mqtt_connect();
-    while (m_run)
+    while(m_run)
     {
         usleep(500000);
     }
@@ -66,11 +72,11 @@ void MqttBackend::mqtt_connect()
     mqtt::will_options will(willmsg);
     conopts.set_will(will);
 
-    while ((state == false) && (m_run))
+    while((state == false) && (m_run))
     {
         mqtt::token_ptr conntok = m_client->connect(conopts);
         state = conntok->wait_for(10000);
-        if (state == false)
+        if(state == false)
         {
             RCLCPP_ERROR(this->get_logger(), "Connection to mqtt broker failed");
         }
@@ -87,9 +93,11 @@ void MqttBackend::mqtt_connect()
 }
 void MqttBackend::message_arrived(mqtt::const_message_ptr msg)
 {
-    RCLCPP_INFO(this->get_logger(), "MQTT Received Topic %s \r\n Message: %s",
-                msg->get_topic().c_str(), msg->to_string().c_str());
+    RCLCPP_INFO(this->get_logger(),
+                "MQTT Received Topic %s \r\n Message: %s",
+                msg->get_topic().c_str(),
+                msg->to_string().c_str());
     m_mqttcb->message_recieved(msg);
 }
 
-}  // namespace config
+} // namespace config

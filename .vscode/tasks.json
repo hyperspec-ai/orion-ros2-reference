@@ -43,6 +43,9 @@
       "options": {
         "cwd": "${workspaceFolder}/docker"
       },
+      "problemMatcher": [
+        "$gcc"
+      ]
     }
   ]
 }

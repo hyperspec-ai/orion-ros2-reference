@@ -8,14 +8,13 @@
 #include <thread>
 #include "rclcpp/rclcpp.hpp"
 #include "ubxgpsnode.hpp"
-namespace ubx_node
-{
+namespace ubx_node {
 std::string get_node_name(std::vector<rclcpp::Parameter> parameters)
 {
     std::string ret_val = "ubx_node";
-    for (auto const& parameter : parameters)
+    for(auto const& parameter : parameters)
     {
-        if (parameter.get_name() == "node_name")
+        if(parameter.get_name() == "node_name")
         {
             ret_val = parameter.as_string();
         }
@@ -23,16 +22,16 @@ std::string get_node_name(std::vector<rclcpp::Parameter> parameters)
     return ret_val;
 }
 
-UbxGpsNode::UbxGpsNode(const rclcpp::NodeOptions& options)
-    : LifecycleNode(get_node_name(options.parameter_overrides()), options),
-      m_status_msg(this),
-      m_loc_msg(this),
-      m_eoe_msg(this),
-      m_pvt_msg(this),
-      m_running(true),
-      m_thread_running(true),
-      m_eoe_count(0),
-      m_node_name(get_node_name(options.parameter_overrides()))
+UbxGpsNode::UbxGpsNode(const rclcpp::NodeOptions& options) :
+    LifecycleNode(get_node_name(options.parameter_overrides()), options),
+    m_node_name(get_node_name(options.parameter_overrides())),
+    m_status_msg(this),
+    m_loc_msg(this),
+    m_eoe_msg(this),
+    m_pvt_msg(this),
+    m_running(true),
+    m_thread_running(true),
+    m_eoe_count(0)
 
 {
     // Init atomic members
@@ -47,8 +46,8 @@ UbxGpsNode::~UbxGpsNode()
     de_init_sensor();
 }
 
-rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn UbxGpsNode::on_configure(
-    const rclcpp_lifecycle::State&)
+rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn UbxGpsNode::
+    on_configure(const rclcpp_lifecycle::State&)
 {
     rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn ret_val =
         rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
@@ -64,10 +63,11 @@ rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn UbxGps
             "/" + m_node_name + "/gnss_fix", 10);
         RCLCPP_INFO(this->get_logger(), "Configuration done");
     }
-    catch (const std::exception& e)
+    catch(const std::exception& e)
     {
         RCLCPP_INFO(this->get_logger(), "Error while reading config parameters:%s", e.what());
-        ret_val = rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::ERROR;
+        ret_val =
+            rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::ERROR;
     }
     return (ret_val);
 }
@@ -76,14 +76,14 @@ rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn UbxGps
 {
     rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn ret_val =
         rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
-    if (m_ubx_ser == nullptr)
+    if(m_ubx_ser == nullptr)
     {
         try
         {
             RCLCPP_INFO(this->get_logger(), "Try Starting ubx driver");
 
             /*Check if correction service is avilable*/
-            if (m_rtcm_topic.as_string() != "")
+            if(m_rtcm_topic.as_string() != "")
             {
                 m_rtcm_subscriber = this->create_subscription<rtcm_msgs::msg::RtkRTCM>(
                     m_rtcm_topic.as_string(), 10, [this](rtcm_msgs::msg::RtkRTCM::UniquePtr msg) {
@@ -94,7 +94,7 @@ rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn UbxGps
 
             init_sensor();
         }
-        catch (const std::exception& e)
+        catch(const std::exception& e)
         {
             ret_val =
                 rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::ERROR;
@@ -104,8 +104,8 @@ rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn UbxGps
     return (ret_val);
 }
 
-rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn UbxGpsNode::on_deactivate(
-    const rclcpp_lifecycle::State&)
+rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn UbxGpsNode::
+    on_deactivate(const rclcpp_lifecycle::State&)
 {
     RCLCPP_INFO(this->get_logger(), "Publishing deactivated");
     m_publisher->on_deactivate();
@@ -140,10 +140,10 @@ void UbxGpsNode::monitor_thread()
     sleep(5);
 
     /// While sensor is not deinited run
-    while (m_thread_running)
+    while(m_thread_running)
     {
         // Check only in case sensor is active
-        if (m_running)
+        if(m_running)
         {
             /**
              * Wait the defined time
@@ -152,15 +152,15 @@ void UbxGpsNode::monitor_thread()
             /**
              * Check of end of epoch message was received
              */
-            if (m_eoe_count == m_eoe_count_old)
+            if(m_eoe_count == m_eoe_count_old)
             {
             }
             m_eoe_count_old = m_eoe_count;
 
-            if (m_rtk_corection_lost)
+            if(m_rtk_corection_lost)
             {
                 uint32_t delta = time(nullptr) - m_rtk_corection_timeout;
-                if (delta == 30)
+                if(delta == 30)
                 {
                 }
             }
@@ -209,7 +209,7 @@ uint16_t UbxGpsNode::init_sensor()
     m_ubx_ser->register_receive_msg(&m_eoe_msg);
     m_ubx_ser->register_receive_msg(&m_pvt_msg);
     // Init comport and start reception
-    if (!m_ubx_ser->init_comport())
+    if(!m_ubx_ser->init_comport())
     {
         RCLCPP_ERROR(this->get_logger(), "COM Port Init failed");
     }
@@ -220,7 +220,7 @@ uint16_t UbxGpsNode::init_sensor()
 
 uint16_t UbxGpsNode::de_init_sensor()
 {
-    if (m_ubx_ser != nullptr)
+    if(m_ubx_ser != nullptr)
     {
         m_thread_running = false;
         m_running = false;
@@ -228,9 +228,9 @@ uint16_t UbxGpsNode::de_init_sensor()
         RCLCPP_INFO(this->get_logger(), "Closing Port");
         m_ubx_ser->close_port();
         RCLCPP_INFO(this->get_logger(), "Destructing m_ubx_ser");
-        delete (m_ubx_ser);
+        delete(m_ubx_ser);
         RCLCPP_INFO(this->get_logger(), "Clean up monitor thread");
-        delete (m_monitor_thread);
+        delete(m_monitor_thread);
         m_ubx_ser = nullptr;
     }
     return (0);
@@ -238,9 +238,9 @@ uint16_t UbxGpsNode::de_init_sensor()
 
 void UbxGpsNode::message_received(UbxMessage::Identifier id, const UbxMessage* msg)
 {
-    if (m_running)
+    if(m_running)
     {
-        if (id == m_loc_msg.get_identifier())
+        if(id == m_loc_msg.get_identifier())
         {
             UbxNavHighPresGeo* loc_msg = (UbxNavHighPresGeo*)msg;
             m_acc_h = loc_msg->get_horicontal_acc();
@@ -249,12 +249,12 @@ void UbxGpsNode::message_received(UbxMessage::Identifier id, const UbxMessage* m
             m_lat = loc_msg->get_lat();
             m_height = loc_msg->get_height();
         }
-        else if (id == m_status_msg.get_identifier())
+        else if(id == m_status_msg.get_identifier())
         {
             UbxNavStatus* stat_msg = (UbxNavStatus*)msg;
             uint32_t fix = stat_msg->get_gps_fix();
             uint8_t flags1 = stat_msg->get_nav_status_flags1();
-            switch (fix)
+            switch(fix)
             {
                 case UbxNavStatus::GPS_FIX_NO_FIX:
                     m_rtk_corection_lost = false;
@@ -265,7 +265,7 @@ void UbxGpsNode::message_received(UbxMessage::Identifier id, const UbxMessage* m
                     m_gnns_mode = 0;
                     break;
                 case UbxNavStatus::GPS_FIX_3D:
-                    if ((flags1 & 0x0f) == 0x0F)
+                    if((flags1 & 0x0f) == 0x0F)
                     {
                         m_gnns_mode = 2;
                         m_rtk_corection_lost = false;
@@ -273,19 +273,17 @@ void UbxGpsNode::message_received(UbxMessage::Identifier id, const UbxMessage* m
                     else
                     {
                         m_gnns_mode = 0;
-                        if (m_rtk_corection_lost == false)
+                        if(m_rtk_corection_lost == false)
                         {
                             m_rtk_corection_timeout = time(nullptr);
                         }
                         m_rtk_corection_lost = true;
                     }
                     break;
-                default:
-                    m_gnns_mode = -1;
-                    break;
+                default: m_gnns_mode = -1; break;
             }
         }
-        else if (id == m_pvt_msg.get_identifier())
+        else if(id == m_pvt_msg.get_identifier())
         {
             UbxNavPvt* pvt_msg = (UbxNavPvt*)msg;
             m_velocity = pvt_msg->get_ground_speed();
@@ -293,7 +291,7 @@ void UbxGpsNode::message_received(UbxMessage::Identifier id, const UbxMessage* m
             m_heading = pvt_msg->get_heading();
             m_heading_acc = pvt_msg->get_heading_acc();
         }
-        else if (id == m_eoe_msg.get_identifier())
+        else if(id == m_eoe_msg.get_identifier())
         {
             // spdlog::trace("EOE Received");
             m_eoe_count++;
@@ -308,8 +306,8 @@ void UbxGpsNode::message_received(UbxMessage::Identifier id, const UbxMessage* m
             message.position_covariance[8] = m_acc_v;
             message.status.status = m_gnns_mode;
             message.status.service = message.status.SERVICE_GALILEO |
-                                     message.status.SERVICE_COMPASS |
-                                     message.status.SERVICE_GLONASS | message.status.SERVICE_GPS;
+                message.status.SERVICE_COMPASS | message.status.SERVICE_GLONASS |
+                message.status.SERVICE_GPS;
             message.header.stamp = rclcpp::Clock().now();
             message.header.frame_id = "gps";
 
@@ -319,7 +317,7 @@ void UbxGpsNode::message_received(UbxMessage::Identifier id, const UbxMessage* m
         }
     }
 }
-}  // namespace ubx_node
+} // namespace ubx_node
 
 #include "rclcpp_components/register_node_macro.hpp"
 RCLCPP_COMPONENTS_REGISTER_NODE(ubx_node::UbxGpsNode)
