@@ -103,14 +103,16 @@ void NtripClient::worker_thread()
                  * Prepare headers
                  **/
                 std::vector<std::string> headers = {
-                    "Ntrip-Version: Ntrip/2.0"
-                    "User-Agent: rtcm_ros",
+                    //"Ntrip-Version: Ntrip/2.0",
+                    "User-Agent: NTRIP rtcm_ros",
+                    "Accept: */*",
+                    "Authorization: Basic " + m_auth,
                     "Connection: close",
-                    "Authorization: Basic " + m_auth};
+                };
                 /**
                  * Prepare Request string
                  **/
-                std::string request_data = "GET /" + m_mount_point + " HTTP/1.1\r\n";
+                std::string request_data = "GET /" + m_mount_point + " HTTP/1.0\r\n";
 
                 for(const std::string& header : headers)
                 {
