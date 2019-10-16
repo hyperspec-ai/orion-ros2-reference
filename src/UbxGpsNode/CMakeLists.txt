@@ -18,12 +18,15 @@ find_package(rtcm_msgs REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
 
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+add_subdirectory(json)
 add_library(UbxGpsNode SHARED
   ubxgpsnode.cpp
   ubxcfgmessage.cpp
   ubxmessage.cpp
   ubxreceivemessage.cpp
   ubxserialhandler.cpp
+  routeparser.cpp
   messages/ubxackack.cpp
   messages/ubxacknak.cpp
   messages/ubxnaveoe.cpp
@@ -51,6 +54,7 @@ ament_target_dependencies(UbxGpsNode
 
 target_include_directories(UbxGpsNode PRIVATE
   "./"
+  "./json/include"
 )
 
 target_link_libraries(UbxGpsNode

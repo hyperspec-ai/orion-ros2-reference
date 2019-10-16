@@ -80,5 +80,19 @@
             "finger_print": "<md5 fingerprint>",
             "description": "A RTK Correction data distribution node"
         }
+    ],
+    "routes": [
+        {
+            "src": {
+                "node": "rtk",
+                "endpoint": "rtcm_data"
+            },
+            "dst": [
+                {
+                    "node": "gnss_main",
+                    "endpoint": "rtcm_data"
+                }
+            ]
+        }
     ]
 }

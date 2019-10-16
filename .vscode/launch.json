@@ -15,9 +15,6 @@
       "cwd": "${workspaceRoot}",
       "environment": [],
       "externalConsole": true,
-      "sourceFileMap": {
-        "/opt/ws_kros/src/config_node/": "${workspaceRoot}/src/config_node/",
-      },
       "preLaunchTask": "start_debug_container",
       "setupCommands": [
         {
@@ -34,6 +31,12 @@
       },
       "windows": {
         "MIMode": "gdb"
+      },
+      "sourceFileMap": {
+        "/opt/ws_kros/src/config_node/": "${workspaceRoot}/src/config_node/",
+        "/opt/ws_kros/src/flir_node/": "${workspaceRoot}/src/flir_node/",
+        "/opt/ws_kros/src/rtcm_node/": "${workspaceRoot}/src/rtcm_node/",
+        "/opt/ws_kros/src/ublox_node/": "${workspaceRoot}/src/ublox_node/",
       }
     },
     {

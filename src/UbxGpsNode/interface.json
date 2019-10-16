@@ -1,0 +1,22 @@
+{
+    "node": "UbxGpsNode",
+    "input": [
+        {
+            "endpoint": "rtcm_data",
+            "type": "rtcm_msgs::msg::RtkRTCM"
+        }
+    ],
+    "output": [],
+    "parameters": [
+        {
+            "name": "serial_port",
+            "type": "string",
+            "description": "serial port where the Ublox ZED 9 is connected"
+        },
+        {
+            "name": "sampling_time",
+            "type": "int",
+            "description": "Sampling time in ms, min/typ 60ms"
+        }
+    ]
+}

@@ -270,6 +270,8 @@ bool ConfigurationHandler::load_system_configuration()
                 this->get_logger(), "Loading System Config for vehicle %s", m_vehicle.c_str());
             // Iterate through message lib entries in the config file, must be done before loading
             // nodes as they might depend on this libs
+            nlohmann::json msg_routes_json = json_object["routes"];
+            RCLCPP_INFO(this->get_logger(), "Routes Config: %s", msg_routes_json.dump().c_str());
             nlohmann::json msg_libs_json = json_object["msg_libs"];
             for(auto msg_lib_json : msg_libs_json)
             {
@@ -376,6 +378,7 @@ bool ConfigurationHandler::load_system_configuration()
                             }
                         }
                     }
+                    options.append_parameter_override("routes", msg_routes_json.dump());
                     // check if node is already downloaded if not it is automatically downloaded
                     RCLCPP_INFO(this->get_logger(), "Check pesistence of %s", package.c_str());
                     if(m_persistence_handler->check_package(

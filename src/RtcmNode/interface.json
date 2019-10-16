@@ -1,0 +1,32 @@
+{
+    "node": "RtcmNode",
+    "input": [],
+    "output": [
+        {
+            "endpoint": "rtcm_data",
+            "type": "rtcm_msgs::msg::RtkRTCM"
+        }
+    ],
+    "parameters": [
+        {
+            "name": "ntrip_host",
+            "type": "string",
+            "description": "Ntrip host address, can be IP or URL without protocoll descriptor"
+        },
+        {
+            "name": "ntrip_port",
+            "type": "int",
+            "description": "Ntrip host port, typically 2101"
+        },
+        {
+            "name": "ntrip_user",
+            "type": "string",
+            "description": "Ntrip user name"
+        },
+        {
+            "name": "ntrip_password",
+            "type": "string",
+            "description": "Ntrip password"
+        }
+    ]
+}

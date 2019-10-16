@@ -8,6 +8,7 @@
 #include <thread>
 #include "rclcpp/rclcpp.hpp"
 #include "ubxgpsnode.hpp"
+#include "routeparser.hpp"
 namespace ubx_node {
 std::string get_node_name(std::vector<rclcpp::Parameter> parameters)
 {
@@ -53,11 +54,15 @@ rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn UbxGps
         rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
     try
     {
+        auto routing_json = this->get_parameter("routes");
+        RouteParser rp = RouteParser(routing_json.as_string(), m_node_name);
+        m_rtcm_topic = rp.get_topic_by_endpoint("rtcm_data");
+        RCLCPP_INFO(this->get_logger(), "Topic for rtcm data:%s", m_rtcm_topic.c_str());
         // Get serial port, standard cofig should be /dev/ttyUB0
         m_port = this->get_parameter("serial_port");
         // get sample timing in ms from config
         m_sample_time = this->get_parameter("sampling_time");
-        m_rtcm_topic = this->get_parameter("rtcm_topic");
+        //m_rtcm_topic = this->get_parameter("rtcm_topic");
         // Create new publisher
         m_publisher = this->create_publisher<sensor_msgs::msg::NavSatFix>(
             "/" + m_node_name + "/gnss_fix", 10);
@@ -83,10 +88,10 @@ rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn UbxGps
             RCLCPP_INFO(this->get_logger(), "Try Starting ubx driver");
 
             /*Check if correction service is avilable*/
-            if(m_rtcm_topic.as_string() != "")
+            if(!m_rtcm_topic.empty())
             {
                 m_rtcm_subscriber = this->create_subscription<rtcm_msgs::msg::RtkRTCM>(
-                    m_rtcm_topic.as_string(), 10, [this](rtcm_msgs::msg::RtkRTCM::UniquePtr msg) {
+                    m_rtcm_topic, 10, [this](rtcm_msgs::msg::RtkRTCM::UniquePtr msg) {
                         this->m_ubx_ser->add_rtcm_message(msg->rtcm_data);
                         RCLCPP_INFO(this->get_logger(), "Correction Data Received");
                     });

@@ -21,11 +21,10 @@
  * ROS2 Node intetface for ublox gps receiver
  * TODO: External config
  **/
-namespace ubx_node
-{
+namespace ubx_node {
 class UbxGpsNode : public UbxCbInterface, public rclcpp_lifecycle::LifecycleNode
 {
-   public:
+  public:
     /**
      * Constructor
      */
@@ -57,7 +56,7 @@ class UbxGpsNode : public UbxCbInterface, public rclcpp_lifecycle::LifecycleNode
     rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn on_shutdown(
         const rclcpp_lifecycle::State& state) override;
 
-   private:
+  private:
     /**
      * Monitoring thread, checking on timeouts of recived messages
      */
@@ -72,7 +71,7 @@ class UbxGpsNode : public UbxCbInterface, public rclcpp_lifecycle::LifecycleNode
     /// Sample time in ms
     rclcpp::Parameter m_sample_time;
     /// RTCM Topic
-    rclcpp::Parameter m_rtcm_topic;
+    std::string m_rtcm_topic;
     /// Node Name
     std::string m_node_name;
     /// Received information to be cached until eoe is received
@@ -104,4 +103,4 @@ class UbxGpsNode : public UbxCbInterface, public rclcpp_lifecycle::LifecycleNode
     uint64_t m_eoe_count_old;
     uint16_t m_frame = 0;
 };
-}  // namespace ubx_node
+} // namespace ubx_node
