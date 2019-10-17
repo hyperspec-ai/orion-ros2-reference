@@ -5,7 +5,7 @@ The orion-ros2-rtcm repo is a quite good base to start
 
 \section own_general General stuff:
 -# Care about coding and documentation as defined
--# Define messages always in a seperate repo so it can be reused by different nodes, add them as sumbodule
+-# Define messages in the msgs subfolder
 -# Nodes must support the Lifecyle Management https://design.ros2.org/articles/node_lifecycle.html , so it must be derived from rclcpp_lifecycle::LifecycleNode
 -# CPP/HPP-File: Constructor takes and forwards rclcpp::NodeOptions to Node constructor
 -# CPP File: RCLCPP_COMPONENTS_REGISTER_NODE(NodeNamepsace::NodeClassName) is called at the very end of the file
@@ -18,7 +18,9 @@ The orion-ros2-rtcm repo is a quite good base to start
     CMakeList.txt:
     \include exCMakeLists.txt
 -# add neccessary sub modules as docker dir and own messages
--# Adapt deploy scripts (arm/pc)
+-# Routing configuration handling must be implemented, for this purpose the RouteParser Class from the common_src dir can be used. The "routes" parameter
+ delivers a json substring describing the subscription information, that can be easily passed by the RouterParser Class. 
+-# Adapt deploy scripts (arm/pc) and CI/CD
 \include deploy_all_pc.sh
 
 **/

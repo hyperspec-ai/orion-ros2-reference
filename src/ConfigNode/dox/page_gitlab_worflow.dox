@@ -1,17 +1,20 @@
 /**
-\page gitlab_workflow Git Workflow
+\page gitlab_workflow Git and CI/CD Workflow
 \section git_general General
-Currently this misses CI/CD/Test Driven Parts, that will be added in the next days/weeks.
+
 General Rules
 
    - Never work on master branch
    - No change without issue
    - For each issue a branch if possible
    - No Merge without Review/Merge Reques
+\section cicd_config CI/CD and Rollout Workflow
+\image html bcwf.png
 
 \section branch_naming Branch naming
 Use a descriptive branch name consisting of a verb and a subject
 
 \image html gl_wf.png
+
 
 **/

@@ -26,6 +26,11 @@ The Configuration for messages has the following standard fields in the msg_libs
 - finger_print : md5 finger print of redistributable package (string)
 - description : freed documentation field (string)
 
-
+\section route_con Routing Configuration (routes)
+The Routing Configurations defines the subscribe publish behavior of all nodes.
+Publishing nodes having endpoints, the topic for a endpoint is /node_instance_name/endpoint_name.
+This structure can't be changed and the output endpoints are described in the interface.json for reference and validation.
+Subscribing endpoints have a endpoint name to identify them in the configuration. A publishing endpoint can be subscribed by multiple 
+subscriber endpoints/nodes.
 \example system_config.json System Config
 **/

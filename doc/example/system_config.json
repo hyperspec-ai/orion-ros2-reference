@@ -15,7 +15,7 @@
                 {
                     "name": "ntrip_host",
                     "type": "string",
-                    "value": "157.97.109.112"
+                    "value": "rtgpsout.unavco.org"
                 },
                 {
                     "name": "ntrip_port",
@@ -25,17 +25,46 @@
                 {
                     "name": "ntrip_mountpoint",
                     "type": "string",
-                    "value": "VRS_3_2G_BE"
+                    "value": "P222_RTCM3"
                 },
                 {
                     "name": "ntrip_user",
                     "type": "string",
-                    "value": "saposbln287-1"
+                    "value": "mwilamowitz"
                 },
                 {
                     "name": "ntrip_password",
                     "type": "string",
-                    "value": "gb32wm"
+                    "value": "PbEtUaN3"
+                }
+            ]
+        },
+        {
+            "name": "gnss_main",
+            "execution_location": "INT_X_1",
+            "execution_context": "gnss",
+            "package": "ublox",
+            "node": "UbxGpsNode",
+            "package_location": "http://172.18.0.11/ublox_v1.tar.gz",
+            "version": "2.0",
+            "finger_print": "<md5 fingerprint>",
+            "sensor_token": "198f8449-a8df-405f-b0bf-36337e9739d0",
+            "description": "A gnss receiver node",
+            "parameters": [
+                {
+                    "name": "rtcm_topic",
+                    "type": "string",
+                    "value": "/rtk/rtcm_data"
+                },
+                {
+                    "name": "serial_port",
+                    "type": "string",
+                    "value": "/dev/ttyUB0"
+                },
+                {
+                    "name": "sampling_time",
+                    "type": "int",
+                    "value": 60
                 }
             ]
         }
@@ -50,6 +79,20 @@
             "version": "1.0",
             "finger_print": "<md5 fingerprint>",
             "description": "A RTK Correction data distribution node"
+        }
+    ],
+    "routes": [
+        {
+            "src": {
+                "node": "rtk",
+                "endpoint": "rtcm_data"
+            },
+            "dst": [
+                {
+                    "node": "gnss_main",
+                    "endpoint": "rtcm_data"
+                }
+            ]
         }
     ]
 }
