@@ -33,8 +33,8 @@
         "MIMode": "gdb"
       },
       "sourceFileMap": {
+        "/opt/ws_kros/common_src": "${workspaceRoot}/common_src/",
         "/opt/ws_kros/src/config_node/": "${workspaceRoot}/src/config_node/",
-        "/opt/ws_kros/src/flir_node/": "${workspaceRoot}/src/flir_node/",
         "/opt/ws_kros/src/rtcm_node/": "${workspaceRoot}/src/rtcm_node/",
         "/opt/ws_kros/src/ublox_node/": "${workspaceRoot}/src/ublox_node/",
       }
@@ -53,8 +53,8 @@
       "miDebuggerPath": "/usr/bin/gdb-multiarch",
       "MIMode": "gdb",
       "sourceFileMap": {
+        "/opt/ws_kros/common_src": "${workspaceRoot}/common_src/",
         "/opt/ws_kros/src/config_node/": "${workspaceRoot}/src/config_node/",
-        "/opt/ws_kros/src/flir_node/": "${workspaceRoot}/src/flir_node/",
         "/opt/ws_kros/src/rtcm_node/": "${workspaceRoot}/src/rtcm_node/",
         "/opt/ws_kros/src/ublox_node/": "${workspaceRoot}/src/ublox_node/",
       },
