@@ -15,9 +15,7 @@ function deploy_path_to_arch() {
 
 # usage deploy_to_arch <package-name> <node-name>
 function deploy_node_for_arch() {
-    tar --transform 's/.*\///g' -zcvf /tmp/$2.tar.gz ./install/$1/lib/lib$2.so
-    cp /tmp/$2.tar.gz $ARCH_INSTALL_PATH
-    echo "Deploy succeeded: " $2
+    deploy_path_to_arch ./install/$1/lib/lib$2.so $2.tar.gz
 }
 
 mkdir -p $ARCH_INSTALL_PATH
