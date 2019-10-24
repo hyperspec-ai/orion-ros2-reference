@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # When invoked on jenkins, WS_NODE is not set, so we default set it to /opt/ws_kros
-if [ -z "$WS_NODE" ] then
+if [ -z "$WS_NODE" ]; then
     WS_NODE=/opt/ws_kros
 fi
 
