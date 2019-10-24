@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xv
 
 # This is a helper script that collects the nodes from it's install directory,
 # compresses them and stores them in the install directory for the specific
