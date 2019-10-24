@@ -74,20 +74,20 @@ node {
           }
           if (!git_commit_rtcm_msg.isEmpty()) {
             dir('RTCM') {
-              git url: 'https://go360-jenkins:Go360.io@github.com/go360-io/orion-ros2-config.git', branch: env.BRANCH_NAME
+              git url: 'https://go360-jenkins:Go360.io@github.com/go360-io/orion-ros2-rtcm.git', branch: env.BRANCH_NAME
               sh "cp -Rf ../src/RtcmNode ./rtcm_node  && git add ./rtcm_node && git commit -am \"${git_commit_rtcm_msg}\" && git push origin ${env.BRANCH_NAME}"
             }
           }
           if (!git_commit_ubx_msg.isEmpty()) {
             dir('UBX') {
-              git url: 'https://go360-jenkins:Go360.io@github.com/go360-io/orion-ros2-config.git', branch: env.BRANCH_NAME
+              git url: 'https://go360-jenkins:Go360.io@github.com/go360-io/orion-ros2-ublox.git', branch: env.BRANCH_NAME
               sh "cp -Rf ../src/UbxGpsNode ./ubx_node  && git add ./ubx_node && git commit -am \"${git_commit_ubx_msg}\" && git push origin ${env.BRANCH_NAME}"
             }
           }
         }
       }
-     }
-
+      currentBuild.result = "SUCCESSFUL"   
+    }
  } catch (e) {
     // If there was an exception thrown, the build failed
     currentBuild.result = "FAILED"
