@@ -4,8 +4,7 @@
   "version": "2.0.0",
   "options": {
     "env": {
-      "WS_KROS": "${workspaceFolder}",
-      "WS_NODE": "${workspaceFolder}"
+      "WS_KROS": "${workspaceFolder}"
     }
   },
   "tasks": [
@@ -43,9 +42,7 @@
       "options": {
         "cwd": "${workspaceFolder}/docker"
       },
-      "problemMatcher": [
-        "$gcc"
-      ]
+      "problemMatcher": ["$gcc"]
     }
   ]
 }
