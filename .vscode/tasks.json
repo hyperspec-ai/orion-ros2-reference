@@ -5,7 +5,8 @@
   "options": {
     "env": {
       "WS_KROS": "${workspaceFolder}",
-      "WS_NODE": "${workspaceFolder}"
+      "WS_NODE": "${workspaceFolder}",
+      "ORION_SYSROOT": "${env:ORION_SYSROOT}"
     }
   },
   "tasks": [
@@ -18,6 +19,27 @@
       "label": "start_debug_container",
       "type": "shell",
       "command": "./docker/start_debug.sh",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "ConfigNode Directory mapped to",
+          "endsPattern": "Listening on port 1234"
+        }
+      }
+    },
+    {
+      "label": "start_debug_container_build",
+      "type": "shell",
+      "command": "./docker/start_deploy_debug.sh",
       "isBackground": true,
       "problemMatcher": {
         "pattern": [

@@ -8,7 +8,7 @@
       "name": "Docker Debug Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceRoot}/install/config/lib/config/ConfigNode_exec",
+      "program": "${workspaceRoot}/install_x86/config/lib/config/ConfigNode_exec",
       "miDebuggerServerAddress": "172.18.0.10:1234",
       "args": [],
       "stopAtEntry": true,
@@ -33,17 +33,46 @@
         "MIMode": "gdb"
       },
       "sourceFileMap": {
-        "/opt/ws_kros/common_src": "${workspaceRoot}/common_src/",
-        "/opt/ws_kros/src/config_node/": "${workspaceRoot}/src/config_node/",
-        "/opt/ws_kros/src/rtcm_node/": "${workspaceRoot}/src/rtcm_node/",
-        "/opt/ws_kros/src/ublox_node/": "${workspaceRoot}/src/ublox_node/",
+        "/opt/ws_kros/": "${workspaceRoot}/"
+      }
+    },
+    {
+      "name": "Docker Debug Build and Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceRoot}/install_x86/config/lib/config/ConfigNode_exec",
+      "miDebuggerServerAddress": "172.18.0.10:1234",
+      "args": [],
+      "stopAtEntry": true,
+      "cwd": "${workspaceRoot}",
+      "environment": [],
+      "externalConsole": true,
+      "preLaunchTask": "start_debug_container_build",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "linux": {
+        "MIMode": "gdb"
+      },
+      "osx": {
+        "MIMode": "gdb"
+      },
+      "windows": {
+        "MIMode": "gdb"
+      },
+      "sourceFileMap": {
+        "/opt/ws_kros/": "${workspaceRoot}/"
       }
     },
     {
       "name": "Xavier_1 Debug Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceRoot}/install/config/lib/config/ConfigNode_exec",
+      "program": "${workspaceRoot}/install_x86/config/lib/config/ConfigNode_exec",
       "miDebuggerServerAddress": "172.18.0.100:1234",
       "args": [],
       "stopAtEntry": true,
@@ -53,10 +82,7 @@
       "miDebuggerPath": "/usr/bin/gdb-multiarch",
       "MIMode": "gdb",
       "sourceFileMap": {
-        "/opt/ws_kros/common_src": "${workspaceRoot}/common_src/",
-        "/opt/ws_kros/src/config_node/": "${workspaceRoot}/src/config_node/",
-        "/opt/ws_kros/src/rtcm_node/": "${workspaceRoot}/src/rtcm_node/",
-        "/opt/ws_kros/src/ublox_node/": "${workspaceRoot}/src/ublox_node/",
+        "/opt/ws_kros/": "${workspaceRoot}/"
       },
       "setupCommands": [
         {

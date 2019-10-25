@@ -1,0 +1,98 @@
+{
+    "vehicle": "Sally",
+    "nodes": [
+        {
+            "name": "rtk",
+            "execution_location": "INT_X_1",
+            "execution_context": "gnss",
+            "package": "rtcm",
+            "node": "RtcmNode",
+            "package_location": "http://172.18.0.11/x86/rtcm_v1.tar.gz",
+            "version": "1.0",
+            "finger_print": "<md5 fingerprint>",
+            "description": "A RTK Correction data distribution node",
+            "parameters": [
+                {
+                    "name": "ntrip_host",
+                    "type": "string",
+                    "value": "rtgpsout.unavco.org"
+                },
+                {
+                    "name": "ntrip_port",
+                    "type": "int",
+                    "value": 2101
+                },
+                {
+                    "name": "ntrip_mountpoint",
+                    "type": "string",
+                    "value": "P222_RTCM3"
+                },
+                {
+                    "name": "ntrip_user",
+                    "type": "string",
+                    "value": "mwilamowitz"
+                },
+                {
+                    "name": "ntrip_password",
+                    "type": "string",
+                    "value": "PbEtUaN3"
+                }
+            ]
+        },
+        {
+            "name": "gnss_main",
+            "execution_location": "INT_X_1",
+            "execution_context": "gnss",
+            "package": "ublox",
+            "node": "UbxGpsNode",
+            "package_location": "http://172.18.0.11/x86/ublox_v1.tar.gz",
+            "version": "2.0",
+            "finger_print": "<md5 fingerprint>",
+            "sensor_token": "198f8449-a8df-405f-b0bf-36337e9739d0",
+            "description": "A gnss receiver node",
+            "parameters": [
+                {
+                    "name": "rtcm_topic",
+                    "type": "string",
+                    "value": "/rtk/rtcm_data"
+                },
+                {
+                    "name": "serial_port",
+                    "type": "string",
+                    "value": "/dev/ttyUB0"
+                },
+                {
+                    "name": "sampling_time",
+                    "type": "int",
+                    "value": 60
+                }
+            ]
+        }
+    ],
+    "msg_libs": [
+        {
+            "name": "rtcm_msgs",
+            "execution_location": "INT_X_1",
+            "package": "rtcm_msgs",
+            "message": "rtcm_msgs",
+            "package_location": "http://172.18.0.11/x86/rtcm_msgs_v1.tar.gz",
+            "version": "1.0",
+            "finger_print": "<md5 fingerprint>",
+            "description": "A RTK Correction data distribution node"
+        }
+    ],
+    "routes": [
+        {
+            "src": {
+                "node": "rtk",
+                "endpoint": "rtcm_data"
+            },
+            "dst": [
+                {
+                    "node": "gnss_main",
+                    "endpoint": "rtcm_data"
+                }
+            ]
+        }
+    ]
+}

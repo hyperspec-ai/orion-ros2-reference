@@ -33,10 +33,11 @@ mqttbackend.cpp
 lifecyclemanager.cpp
   
 )
-target_include_directories(ConfigNode PRIVATE  
+target_include_directories(ConfigNode PUBLIC  
   "./"
   "../../common_src/"
   "../../common_src/json/include"
+  "/opt/sysroot/usr/local/include"
 )
 add_subdirectory(../../common_src/ ../install/commonLib/lib/)
 

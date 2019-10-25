@@ -130,15 +130,11 @@ RUN wget https://raw.githubusercontent.com/ros2/ros2/$ROS_DISTRO-release/ros2.re
 RUN apt-get update && rosdep install -y \
   --from-paths src \
   --ignore-src \
-  --skip-keys "console_bridge fastcdr fastrtps libopensplice67 libopensplice69 rti-connext-dds-5.3.1 urdfdom_headers" \
-  && rm -rf /var/lib/apt/lists/*
+  --skip-keys "console_bridge fastcdr fastrtps libopensplice67 libopensplice69 rti-connext-dds-5.3.1 urdfdom_headers" 
+
 
 # build source
-RUN colcon \
-  build \
-  --cmake-args -DSECURITY=ON --no-warn-unused-cli \
-  --symlink-install
-
+RUN colcon build --cmake-args -DSECURITY=ON --no-warn-unused-cli --symlink-install
 #install paho lib
 RUN mkdir /paho \
   && cd /paho \
@@ -153,6 +149,10 @@ RUN mkdir /paho \
   && cmake -Bbuild -H. -DPAHO_BUILD_DOCUMENTATION=FALSE -DPAHO_BUILD_SAMPLES=TRUE -DCMAKE_PREFIX_PATH=/paho/paho.mqtt.c/build/install \
   && cmake --build build/ --target install && ldconfig
 
+RUN apt-get install -q -y g++-aarch64-linux-gnu \
+  g++-arm-linux-gnueabihf \
+  pkg-config-aarch64-linux-gnu \
+  && rm -rf /var/lib/apt/lists/*
 
 
 # setup entrypoint

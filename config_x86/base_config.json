@@ -1,7 +1,7 @@
 {
     "vehicle": "Sally",
     "execution_location": "INT_X_1",
-    "path": "/opt/ws_kros/config/",
+    "path": "/opt/ws_kros/config_x86/",
     "mqtt": {
         "host": "172.18.0.11",
         "user": "vehicle",

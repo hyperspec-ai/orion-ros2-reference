@@ -3,7 +3,9 @@ build*/
 
 **/data/lib_install/*
 /*.tar
-**/install/*/
+**/install/*
+**/install_x86/*
+**/install_arm/*
 **/log/
 **/ext_lib/*
 **/msg_lib/*
