@@ -1,16 +1,30 @@
-#!/bin/bash -xv
+#!/bin/bash +xv
 
 # This is a helper script that collects the nodes from it's install directory,
 # compresses them and stores them in the install directory for the specific
 # architecture
-ARCH=x64
-ARCH_INSTALL_PATH=./install/$ARCH
+
+# parse architecture from cmdline args
+if [ -z "$1" ]; then
+    TARGET_ARCH=x64     #default to x64
+    echo "No target architecture provided. Default to 'x64'"
+else
+    TARGET_ARCH=$1
+fi
+
+# verify target arch is valid (either 'x64' or 'aarch64')
+if [[ "$TARGET_ARCH" != "x64" && "$TARGET_ARCH" != "aarch64" ]]; then
+    echo "Invalid target architecture provided, must be 'x64' or 'aarch64'".
+    exit 1
+fi
+
+ARCH_INSTALL_PATH=./install/$TARGET_ARCH
 
 # usage deploy_to_arch <path-to-lib> <tar-filename>
 function deploy_path_to_arch() {
-    tar --transform 's/.*\///g' -zcvf /tmp/$2 $1
+    tar --transform 's/.*\///g' -zcvf /tmp/$2 $1 > 2&1>/dev/null
     cp /tmp/$2 $ARCH_INSTALL_PATH/$2
-    echo "Deploy succeeded: " $2
+    echo "Deployed to $ARCH_INSTALL_PATH/$2"
 }
 
 # usage deploy_to_arch <package-name> <node-name>

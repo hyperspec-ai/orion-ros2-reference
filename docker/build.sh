@@ -9,4 +9,4 @@ docker run  -v $WS_KROS:/opt/ws_kros --privileged -v /dev:/dev --rm orion:dev \
     "colcon build" --cmake-args ' -DCMAKE_BUILD_TYPE=Debug' -DCMAKE_CXX_FLAGS="-Werror -Wall"
 
 # copy and compress binaries
-(cd $WS_KROS;./deploy_arch.sh)
+(cd $WS_KROS;./deploy_arch.sh x64)
