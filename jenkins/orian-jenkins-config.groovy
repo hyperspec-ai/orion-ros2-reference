@@ -10,14 +10,14 @@ node {
         println(shortCommit)
       }
     }
-    
+
     stage('Build Dev') {
       if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'qa' || env.BRANCH_NAME == 'staging' ||env.BRANCH_NAME == 'develop') {
         sh "cat ~/password.txt | docker login -u go360jenkins --password-stdin"
-        sh "cd ./docker && pwd && ./build_dev.sh"
+        sh "cd ./docker && pwd && AUTOMATED_BUILD=1 ./build_dev.sh"
       }
     }
-    
+
     stage('Build ') {
       withEnv(["WS_KROS=/opt/ws_kros"]) {
         println(env.WS_KROS)
@@ -28,7 +28,7 @@ node {
         }
       }
     }
-    
+
     stage('Upload S3') {
       if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'qa' || env.BRANCH_NAME == 'staging' ||env.BRANCH_NAME == 'develop') {
         //sh "rm -rf ./tmp && mkdir -p ./install/tmp"
@@ -38,7 +38,7 @@ node {
         sh "aws s3 sync ./install/x64 s3://go360-orion/builds/${env.BRANCH_NAME}/x64"
       }
     }
-    
+
     stage("last-changes") {
       if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'qa' || env.BRANCH_NAME == 'staging' ||env.BRANCH_NAME == 'develop') {
         def publisher = LastChanges.getLastChangesPublisher "LAST_SUCCESSFUL_BUILD", "SIDE", "LINE", true, true, "", "", "", "", ""
@@ -65,7 +65,7 @@ node {
           println(git_commit_ubx_msg);
           println(git_commit_msg);
           println("---------------------------------------------------");
-          
+
           if (!git_commit_config_msg.isEmpty()) {
             dir('CONFIG') {
               git url: 'https://go360-jenkins:Go360.io@github.com/go360-io/orion-ros2-config.git', branch: env.BRANCH_NAME
@@ -86,7 +86,7 @@ node {
           }
         }
       }
-      currentBuild.result = "SUCCESSFUL"   
+      currentBuild.result = "SUCCESSFUL"
     }
  } catch (e) {
     // If there was an exception thrown, the build failed
