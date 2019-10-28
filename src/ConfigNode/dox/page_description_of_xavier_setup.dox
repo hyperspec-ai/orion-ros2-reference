@@ -1,0 +1,74 @@
+/**
+\page xavier_debug_setup Xavier Setup
+
+\section xavier_setup_prep Preparing the Xaviers
+
+For Cross compilation to arm a sysroot must be available or extracted from a Xavier, see also \ref sysroot
+
+The Xavier must be prepared equal to the sysroot prepration in \ref install_ros_xavier and \ref inst_add_apck. 
+
+In addition via apt install gdb-multiarch must be installed
+
+Precondition: \ref dev_setup especially the the intrface part.
+Setup the Xavier with user embedded and password embedded.
+
+The following packages should be installed on the Xavier and Host:
+    - scp
+    - sshpass
+    - rsync
+
+The Xavier is using for debugging purpose the same docker orion:infra container as the PC setup.
+-# Connecting a USB Ethernet Adapter to the Host system and connecting with a network cable
+   with the Xavier Setting the Xavier IP Address to Manual:
+       - Address 172.18.0.100 (172.18.0.101 for the second)
+       - Netmask 255.255.255.0
+       - Gateway 172.18.0.1
+       - DNS: Server any reachable DNS Server (8.8.8.8)
+-# Executing the script add_eth_if.sh in the docker directory
+-# Test to ping the Xavier under 172.18.0.100, Internet should also work if the host has a
+      internet connection
+-# On the Xavier, compile and deploy neccesary archives on the infrastructure by calling deploy_all_arm.sh script for each
+    node in the config (see also \ref sys_conf_ex)
+-# Start the gdbserver/Config Node
+-# Start Debuging in VSC (Xavier_1 Debug Launch)
+--> Will be soon an update that automates this (currently working on corss compilation and auto deployment)
+
+\section env_var_setuo Enviromental Variable Setup
+
+
+
+Following predoncditions:
+
+Expected two Xaviers connected to the same network, setup with neccesary libs etc to run ConfigNode.
+In addtion rsync must be installed on the Xaviers.
+
+Add and adapt if neccesary the following entries to /etc/environment
+
+<code>
+WS_KROS="/home/marcus/Code/orion-ros2-config" <br/>
+ORION_SYSROOT="/home/marcus/xavier_root3/" <br/>
+ORION_XAVIER1_USER="embedded" <br/>
+ORION_XAVIER1_PASSWORD="embedded" <br/>
+ORION_XAVIER1_IP="172.18.0.100" <br/>
+ORION_XAVIER2_USER="embedded2" <br/>
+ORION_XAVIER2_PASSWORD="embedded" <br/>
+ORION_XAVIER2_IP="172.18.0.101" <br/>
+</code>
+
+Enviromental Variable Descriptions:
+
+- WS_KROS Ptah to orion-ros2-reference repository
+- ORION_SYSROOT Path to sysroot directory for crosscompilation, see also \ref sysroot
+- ORION_XAVIER1/2_USER user name of xavier user to be used, must have access to all neccesary hardware \ref udev_rules
+- ORION_XAVIER1/2_PASSWORD password of user
+- ORION_XAVIER1/2_IP IP Adresses of Xaviers should be 172.18.0.100 and 172.18.0.101, should be on ORION_NW
+
+
+\section xavier_debug_how How it works
+
+There are two debug options for the xavier1 currently available
+
+- Xavier_1 Build Debug Launch: Buillds the arm binaries for all devices, copies binaries and config to the xavier and starts a gdbserver
+- Xavier_1 Debug Launch: Copies the configuration and starts the gdbserver
+
+**/

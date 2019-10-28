@@ -37,7 +37,7 @@
       }
     },
     {
-      "name": "Docker Debug Build and Launch",
+      "name": "Docker Build Debug and Launch",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceRoot}/install_x86/config/lib/config/ConfigNode_exec",
@@ -72,8 +72,8 @@
       "name": "Xavier_1 Debug Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceRoot}/install_x86/config/lib/config/ConfigNode_exec",
-      "miDebuggerServerAddress": "172.18.0.100:1234",
+      "program": "${workspaceRoot}/install_arm/config/lib/config/ConfigNode_exec",
+      "miDebuggerServerAddress": "${env:ORION_XAVIER1_IP}:1234",
       "args": [],
       "stopAtEntry": true,
       "cwd": "${workspaceRoot}",
@@ -81,6 +81,33 @@
       "externalConsole": true,
       "miDebuggerPath": "/usr/bin/gdb-multiarch",
       "MIMode": "gdb",
+      "preLaunchTask": "start_debug_xavier1",
+      "sourceFileMap": {
+        "/opt/ws_kros/": "${workspaceRoot}/"
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    ,
+    {
+      "name": "Xavier_1 Build Debug Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceRoot}/install_arm/config/lib/config/ConfigNode_exec",
+      "miDebuggerServerAddress": "${env:ORION_XAVIER1_IP}:1234",
+      "args": [],
+      "stopAtEntry": true,
+      "cwd": "${workspaceRoot}",
+      "environment": [],
+      "externalConsole": true,
+      "miDebuggerPath": "/usr/bin/gdb-multiarch",
+      "MIMode": "gdb",
+      "preLaunchTask": "start_build_debug_xavier1",
       "sourceFileMap": {
         "/opt/ws_kros/": "${workspaceRoot}/"
       },

@@ -1,0 +1,139 @@
+/**
+\page sysroot Sysroot creation from Xavier
+Precondition local clone of orion-ros2-reference repo and general setup
+\section prep_xavier Prepare Xavier
+\subsection install_ros_xavier Install ROS2
+Install ROS2 as described in https://index.ros.org/doc/ros2/Installation/Crystal/Linux-Development-Setup/ .
+
+Add cross compilation repo from ros2_ws folder:
+
+<code>
+git clone https://github.com/ros-tooling/cross_compile.git -b 0.0.1 src/ros2/cross_compile
+</code>
+
+<b>Please care about that the currently used distro is dashing and not crystal as described above.</b>
+
+Build ros2 with colcon build as described in the documenation.
+
+\subsection inst_add_apck Install additional packages
+Install the following packages via apt install:
+- libcurl4-openssl-dev
+- libarchive-dev
+- libarchive
+- rsync
+
+Install FLIR Spinnaker API via:
+
+https://www.flir.com/support-center/iis/machine-vision/downloads/spinnaker-sdk-and-firmware-download/
+
+(Ubuntu 18.04 ARM package, follow README in the tar.gz file )
+
+Clone reference repo and do a test compile to be sure all depenceies are fullfilled.
+
+\section download_clean_sysroot Download and Clean Up sysroot
+\subsection rsync_sysroor rsync sysroot
+
+Rsync sysroot via (adapt pathes):
+
+<code>
+rsync -r -a -v -e ssh embedded2@172.18.0.100:/ /home/marcus/xavier_root/
+</code>
+
+Set IP and username accordingly to your settings
+
+\subsection cleanup_sysroot Clean up Sysroot
+Keep only following dirs in the root:
+
+- /etc
+- /home
+- /lib
+- /opt
+- /root
+- /tmp
+- /usr
+
+delete firmware folder from /lib
+
+\subsection correct_sysroot_links Correct some stuff
+Start docker with mounted sysroot
+
+<code>
+docker run --net orion_nw --ip 172.18.0.10 -it -v /home/marcus/Code/orion-ros2-reference/:/opt/ws_kros -v \<path to sysroot\>:/opt/sysroot --privileged -v /dev:/dev  --rm orion:dev
+</code>
+
+Expected mount/copy path of sysroot is /opt/sysroot to keep the symbol links intact
+
+prevent build of some packages known having problems with cross compile
+
+<code>
+touch 
+    ros2_ws/src/ros2/rviz/COLCON_IGNORE 
+    ros2_ws/src/ros-visualization/COLCON_IGNORE 
+    ros2_ws/src/ros/ros_tutorials/turtlesim/COLCON_IGNORE
+
+</code>
+
+There are problems finding libdl.so without sources when cross compile, make file was adapted accordingly:
+Changed /opt/sysroot/src/osrf/osrf_testing_tools_cpp/osrf_testing_tools_cpp/CMakeList.txt:
+- remove 		find_library(DL_LIBRARY NAMES dl)
+- added 		link_directories(/opt/sysroot/usr/lib/aarch64-linux-gnu/)
+- changed     	target_link_libraries(memory_tools dl) / removed condition
+
+
+Update all NVIDIA Symlinks with 
+
+<code>
+ln -f -s /opt/sysroot/usr/lib/aarch64-linux-gnu/tegra/*.so /opt/sysroot/usr/lib/aarch64-linux-gnu/
+</code>
+
+Fixing some other build stuff regarding ROS2 cross compile tutorial
+--> Thats also done in the build scrip each time executed 
+
+<code>
+export TARGET_TRIPLE=aarch64-linux-gnu<br/>
+mkdir -p /usr/lib/$TARGET_TRIPLE<br/>
+ln -s /opt/sysroot/lib/$TARGET_TRIPLE/libz.so.1 /usr/lib/$TARGET_TRIPLE/libz.so<br/>
+ln -s /opt/sysroot/lib/$TARGET_TRIPLE/libpcre.so.3 /usr/lib/$TARGET_TRIPLE/libpcre.so<br/>
+</code>
+\subsection try_ros_cross Cross compile ROS2 base package
+
+Execute the following commands in the bash
+
+<code>
+cd /opt/sysroot/opt/ros2_ws <br/>
+rm -R build <br/>
+rm -R install <br/>
+export TARGET_ARCH=aarch64 <br/>
+export TARGET_TRIPLE=aarch64-linux-gnu <br/>
+export CC=/usr/bin/$TARGET_TRIPLE-gcc <br/>
+export CXX=/usr/bin/$TARGET_TRIPLE-g++ <br/>
+export CROSS_COMPILE=/usr/bin/$TARGET_TRIPLE- <br/>
+export SYSROOT=/opt/sysroot <br/>
+export ROS2_INSTALL_PATH=/opt/sysroot/opt/ros2_ws/install <br/>
+export PYTHON_SOABI=cpython-36m-$TARGET_TRIPLE <br/>
+export PWD=/opt/sysroot/opt/ros2_ws <br/>
+colcon build \ <br/>
+    --cmake-force-configure \ <br/>
+    --cmake-args \ <br/>
+        -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \ <br/>
+        -DCMAKE_TOOLCHAIN_FILE="/opt/sysroot/opt/ros2_ws/src/ros2/cross_compile/cmake-toolchains/generic_linux.cmake" \ <br/>
+        -DSECURITY=ON \ <br/>
+        -DCMAKE_BUILD_TYPE=Debug \ <br/>
+        -DCMAKE_CXX_FLAGS="-Wall" \ <br/>
+	-DBUILD_TESTING:BOOL=OFF 
+</code>
+Check if no package failed
+
+\subsection cross_orion Cross Compile Project Orion Reference repo
+By executing
+
+/opt/ws_kros and execute bash docker/run_in_docker_scripts/build_arm.sh
+
+On ARM Base:
+General don't forget to set the LD_LIBRARY_PATH to lib_message (already done) and lib_ext (to be created), if not system config load might fail in case of testing--> done in the entrypoint.sh for docker
+
+
+
+
+
+**/

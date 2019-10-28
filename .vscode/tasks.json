@@ -6,7 +6,10 @@
     "env": {
       "WS_KROS": "${workspaceFolder}",
       "WS_NODE": "${workspaceFolder}",
-      "ORION_SYSROOT": "${env:ORION_SYSROOT}"
+      "ORION_SYSROOT": "${env:ORION_SYSROOT}",
+      "ORION_XAVIER1_USER": "${env:ORION_XAVIER1_USER}",
+      "ORION_XAVIER1_PASSWORD": "${env:ORION_XAVIER1_PASSWORD}",
+      "ORION_XAVIER1_IP": "${env:ORION_XAVIER1_IP}",
     }
   },
   "tasks": [
@@ -19,6 +22,48 @@
       "label": "start_debug_container",
       "type": "shell",
       "command": "./docker/start_debug.sh",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "ConfigNode Directory mapped to",
+          "endsPattern": "Listening on port 1234"
+        }
+      }
+    },
+    {
+      "label": "start_debug_xavier1",
+      "type": "shell",
+      "command": "./docker/start_debug_arm.sh",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "ConfigNode Directory mapped to",
+          "endsPattern": "Listening on port 1234"
+        }
+      }
+    },
+    {
+      "label": "start_build_debug_xavier1",
+      "type": "shell",
+      "command": "./docker/start_deploy_debug_arm.sh",
       "isBackground": true,
       "problemMatcher": {
         "pattern": [
@@ -53,7 +98,7 @@
         "background": {
           "activeOnStart": true,
           "beginsPattern": "ConfigNode Directory mapped to",
-          "endsPattern": "Listening on port 1234"
+          "endsPattern": "Remote side has terminated connection.  GDBserver will reopen the connection.\nListening on port 1234"
         }
       }
     },

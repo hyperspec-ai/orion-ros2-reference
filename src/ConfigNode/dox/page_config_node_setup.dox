@@ -20,5 +20,5 @@ The reference repo reflects all standard nodes delivered by project Orion and en
 -# The debugger should stop at the main function, so you are ready to go, you can stop the
    debugger as it seems that all is fine
  
- Next Step: \ref gen_node_setup
+ Next Step: \ref xavier_debug_setup
 **/

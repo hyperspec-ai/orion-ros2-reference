@@ -19,8 +19,9 @@ How to:
 - \ref vsc_setup
 - \ref config_node_setup
 - \ref dev_setup (also linked in \ref config_node_setup)
+- \ref xavier_debug_setup
 - \ref setup_own_node
-- \ref setup_xavier
+
 
 How to Configure:
 - \ref base_conf_ex
