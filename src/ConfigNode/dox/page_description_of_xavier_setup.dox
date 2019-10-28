@@ -27,11 +27,6 @@ The Xavier is using for debugging purpose the same docker orion:infra container 
 -# Executing the script add_eth_if.sh in the docker directory
 -# Test to ping the Xavier under 172.18.0.100, Internet should also work if the host has a
       internet connection
--# On the Xavier, compile and deploy neccesary archives on the infrastructure by calling deploy_all_arm.sh script for each
-    node in the config (see also \ref sys_conf_ex)
--# Start the gdbserver/Config Node
--# Start Debuging in VSC (Xavier_1 Debug Launch)
---> Will be soon an update that automates this (currently working on corss compilation and auto deployment)
 
 \section env_var_setuo Enviromental Variable Setup
 
