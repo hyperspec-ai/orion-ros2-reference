@@ -18,14 +18,8 @@ UbxSerialHandler::UbxSerialHandler(const std::string& port) : m_ack_msg(this), m
 
 UbxSerialHandler::~UbxSerialHandler()
 {
-    /*
-    for (auto msg : m_receive_messages)
-    {
-        delete msg.second;
-    }
-    */
 
-    for (auto msg : m_config_messages)
+    for(auto msg : m_config_messages)
     {
         delete msg;
     }
@@ -47,28 +41,28 @@ bool UbxSerialHandler::init_comport()
 {
     bool ret_val = true;
     m_port = open(m_port_name.c_str(), O_RDWR);
-    if (m_port != -1)
+    if(m_port != -1)
     {
         termios tty = get_termios();
         cfsetispeed(&tty, B115200);
         cfsetospeed(&tty, B115200);
-        tty.c_cflag &= ~PARENB;   // No parity bit is added to the output characters
-        tty.c_cflag &= ~CSTOPB;   // Only one stop-bit is used
-        tty.c_cflag &= ~CSIZE;    // CSIZE is a mask for the number of bits per character
-        tty.c_cflag |= CS8;       // Set to 8 bits per character
-        tty.c_cflag &= ~CRTSCTS;  // Disable hadrware flow control (RTS/CTS)
+        tty.c_cflag &= ~PARENB; // No parity bit is added to the output characters
+        tty.c_cflag &= ~CSTOPB; // Only one stop-bit is used
+        tty.c_cflag &= ~CSIZE; // CSIZE is a mask for the number of bits per character
+        tty.c_cflag |= CS8; // Set to 8 bits per character
+        tty.c_cflag &= ~CRTSCTS; // Disable hadrware flow control (RTS/CTS)
         tty.c_cflag |= CREAD | CLOCAL;
         // tty.c_oflag = 0; // No remapping, no delays
         // tty.c_oflag &= ~OPOST; // Make raw
-        tty.c_cc[VTIME] = (cc_t)(10);  // 1 second read timeout
+        tty.c_cc[VTIME] = (cc_t)(10); // 1 second read timeout
         tty.c_cc[VMIN] = 0;
-        tty.c_iflag &= ~(IXON | IXOFF | IXANY);  // Turn off s/w flow ctrl
+        tty.c_iflag &= ~(IXON | IXOFF | IXANY); // Turn off s/w flow ctrl
         tty.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL);
-        tty.c_lflag &= ~ICANON;  // Turn off canonical input, which is suitable for pass-through
-        tty.c_lflag &= ~ECHO;    // Configure echo depending on echo_ boolean
+        tty.c_lflag &= ~ICANON; // Turn off canonical input, which is suitable for pass-through
+        tty.c_lflag &= ~ECHO; // Configure echo depending on echo_ boolean
         tty.c_lflag &=
-            ~ECHOE;  // Turn off echo erase (echo erase only relevant if canonical input is active)
-        tty.c_lflag &= ~ECHONL;  //
+            ~ECHOE; // Turn off echo erase (echo erase only relevant if canonical input is active)
+        tty.c_lflag &= ~ECHONL; //
         tty.c_lflag &= ~ISIG;
         set_termios(tty);
         // spdlog::info("UBX Port opened succesfully, starting worker threads");
@@ -84,14 +78,14 @@ bool UbxSerialHandler::init_comport()
 
 termios UbxSerialHandler::get_termios()
 {
-    if (m_port == -1)
+    if(m_port == -1)
         throw std::runtime_error("get_termios() called but file descriptor was not valid.");
 
     struct termios tty;
     memset(&tty, 0, sizeof(tty));
 
     // Get current settings (will be stored in termios structure)
-    if (tcgetattr(m_port, &tty) != 0)
+    if(tcgetattr(m_port, &tty) != 0)
     {
         // Error occurred
         std::cout << "Could not get terminal attributes for \"" << m_port_name << "\" - "
@@ -108,7 +102,7 @@ void UbxSerialHandler::set_termios(termios term)
     // Flush port, then apply attributes
     tcflush(m_port, TCIFLUSH);
 
-    if (tcsetattr(m_port, TCSANOW, &term) != 0)
+    if(tcsetattr(m_port, TCSANOW, &term) != 0)
     {
         // Error occurred
         std::cout << "Could not apply terminal attributes for \"" << m_port_name << "\" - "
@@ -133,14 +127,14 @@ void UbxSerialHandler::receive_message_thread()
     UbxMessage::Identifier msg_id;
 
     uint16_t length;
-    while (m_running)
+    while(m_running)
     {
-        if (get_ser_byte(buffer_pointer, read_length) == read_length)
+        if(get_ser_byte(buffer_pointer, read_length) == read_length)
         {
-            switch (m_receive_state)
+            switch(m_receive_state)
             {
                 case STATE_WAITING_KEY_1:
-                    if (buffer_pointer[0] == KEY_1)
+                    if(buffer_pointer[0] == KEY_1)
                     {
                         // spdlog::trace("UBX KEY_1 Received");
                         m_receive_state = STATE_WAITING_KEY_2;
@@ -149,7 +143,7 @@ void UbxSerialHandler::receive_message_thread()
                     }
                     break;
                 case STATE_WAITING_KEY_2:
-                    if (buffer_pointer[0] == KEY_2)
+                    if(buffer_pointer[0] == KEY_2)
                     {
                         // spdlog::trace("UBX KEY_2 Received");
                         m_receive_state = STATE_WAITING_MSG_ID;
@@ -166,7 +160,8 @@ void UbxSerialHandler::receive_message_thread()
                     break;
 
                 case STATE_WAITING_MSG_ID:
-                    msg_id = UbxMessage::Identifier::from_int(buffer_pointer[0], buffer_pointer[1]);
+                    msg_id =
+                        UbxMessage::Identifier::from_int(buffer_pointer[0], buffer_pointer[1]);
 
                     // spdlog::trace("UBX Msg ID Received {0:x}", msg_id);
                     m_receive_state = STATE_WAITING_LENGTH;
@@ -190,7 +185,7 @@ void UbxSerialHandler::receive_message_thread()
                     break;
 
                 case STATE_WAITING_CS:
-                    if (m_receive_messages.count(msg_id) != 0)
+                    if(m_receive_messages.count(msg_id) != 0)
                     {
                         m_receive_messages[msg_id]->read_message_from(buffer, length + 8);
                     }
@@ -212,11 +207,11 @@ void UbxSerialHandler::receive_message_thread()
 
 void UbxSerialHandler::message_received(UbxMessage::Identifier id, const UbxMessage* /*msg*/)
 {
-    if ((id == m_ack_msg.get_identifier()) && (m_cfg_send_state == CFG_STATE_SEND))
+    if((id == m_ack_msg.get_identifier()) && (m_cfg_send_state == CFG_STATE_SEND))
     {
         m_cfg_send_state = CFG_STATE_RECVD;
     }
-    else if (id == m_nak_msg.get_identifier())
+    else if(id == m_nak_msg.get_identifier())
     {
         m_cfg_send_state = CFG_STATE_ERROR;
     }
@@ -232,7 +227,7 @@ void UbxSerialHandler::send_thread()
     std::vector<uint8_t> data_buffer;
 
     // Configure first....
-    for (auto msg : m_config_messages)
+    for(auto msg : m_config_messages)
     {
         data_buffer.resize(msg->get_message_size());
 
@@ -243,30 +238,30 @@ void UbxSerialHandler::send_thread()
         assert(write_result == len);
 
         m_cfg_send_state = CFG_STATE_SEND;
-        while (m_cfg_send_state == CFG_STATE_SEND)
+        while(m_cfg_send_state == CFG_STATE_SEND)
         {
             usleep(10000);
-            if (m_running != true)
+            if(m_running != true)
             {
                 break;
             }
         }
-        if (m_cfg_send_state != CFG_STATE_RECVD)
+        if(m_cfg_send_state != CFG_STATE_RECVD)
         {
         }
         else
         {
         }
-        if (m_running != true)
+        if(m_running != true)
         {
             break;
         }
     }
-    while (m_running)
+    while(m_running)
     {
         {
             std::lock_guard<std::mutex> lock(m_rtcm_mutex);
-            while (!m_rtcm_messages.empty())
+            while(!m_rtcm_messages.empty())
             {
                 std::vector<uint8_t> msg = m_rtcm_messages.front();
                 write(m_port, msg.data(), msg.size());

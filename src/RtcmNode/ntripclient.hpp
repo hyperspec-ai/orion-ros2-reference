@@ -1,6 +1,3 @@
-/***
- * NTRIP Client
- * */
 #pragma once
 #include <algorithm>
 #include <atomic>
@@ -19,8 +16,7 @@
 #include "ntripcallback.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "socket.hpp"
-namespace ntrip
-{
+namespace ntrip {
 /*! Response structure for reading data from the http connection*/
 struct Response final
 {
@@ -101,23 +97,29 @@ struct Response final
     /*!Returned data*/
     std::vector<uint8_t> body;
 };
-/*! Ntrip Client implementation*/
-
+/**
+ * @brief Ntrip client implementation based on a simple http client
+ * 
+ */
 class NtripClient
 {
-   public:
+  public:
     /**
      * Constructor
      *
-     * @param onst std::string& host host name or ip address
-     * @param uint16_t port Port
-     * @param const std::string& mount_point NTRIP Mountpoint
-     * @param NtripCallback* callback Callbacj for received RTCM sentences
-     * @param const std::string& user User Name for ntrip server, only base Auth is supported
-     * @param onst std::string& password Password for ntrip server, only base Auth is supported
+     * @param host host name or ip address
+     * @param port TCP Port
+     * @param mount_point NTRIP Mountpoint
+     * @param callback Callback for received RTCM sentences
+     * @param user User Name for ntrip server, only base Auth is supported
+     * @param password Password for ntrip server, only base Auth is supported
      */
-    NtripClient(const std::string& host, uint16_t port, const std::string& mount_point,
-                NtripCallback* callback, const std::string& user, const std::string& password);
+    NtripClient(const std::string& host,
+                uint16_t port,
+                const std::string& mount_point,
+                NtripCallback* callback,
+                const std::string& user,
+                const std::string& password);
 
     /**
      * Shutting down ntrip server
@@ -125,20 +127,25 @@ class NtripClient
     void shutdown();
     /**
      * Update gga NMEA sentence / position information to update VRS position
-     * @param std::string gga GPGGA NMEA Sentence of the current position
+     * @param gga GPGGA NMEA Sentence of the current position
      **/
     void set_gga(std::string gga);
 
-   private:
+  private:
     enum recv_state_t
     {
+        /*! Initial state, header expected and must be parsed */
         RECV_START = 0,
+        /*! Continued State , no header expected juts payload */
         RECV_CONT = 1
     };
     enum recv_success_t
     {
+        /*! Receive succesfull */
         RECV_OK = 0,
+        /*! Protocoll error */
         RECV_FAILED = 1,
+        /*! Disconnected from ntrip caster */
         RECV_DISCONNECTED = 2
     };
     /**
@@ -147,28 +154,36 @@ class NtripClient
     void worker_thread();
     /**
      * Write data to socket
-     * @param Socket& socket Socket data to be send
-     * @param std::string requestData data to be send
+     * @param socket Socket data to be send
+     * @param requestData data to be send
      **/
     uint8_t write_to_socket(Socket& socket, std::string requestData);
     /**
      * Reads data from socket
-     * @param Socket& socket socket to read from
-     * @param uint8_t* state returns the staus of the reas operation
-     * @param recv_state_t rstate in case of RECV_START http header is read and analysed
+     * @param socket to read from
+     * @param state returns the staus of the reas operation
+     * @param rstate in case of RECV_START http header is read and analysed
      **/
     Response read_from_socket(Socket& socket, recv_success_t* state, recv_state_t rstate);
+
     /*!GGA NMEA Sentence of current situation, initial Position is Berlin Tiergarten*/
     std::string m_gga = "$GPGGA,144434.860,5230.791,N,01321.387,E,1,12,1.0,0.0,M,0.0,M,,*64\r\n";
-    /*Pointer to thread object for worker_thread()*/
-    std::thread* m_thread;
 
+    /*!Pointer to thread object for worker_thread()*/
+    std::thread* m_thread;
+    /*! ntrip caster host name*/
     std::string m_host;
+    /*! ntrip caster port*/
     uint16_t m_port;
+    /*! http auth string based on username/password */
     std::string m_auth;
+    /*! ntrip caster mountpoint */
     std::string m_mount_point;
+    /*! ntrip reception callback*/
     NtripCallback* m_callback;
+    /*! running flag */
     std::atomic<bool> m_running;
+    /*! gga access mutex to protect gga sentence when updated*/
     std::mutex m_gga_mutex;
 };
-}  // namespace ntrip
+} // namespace ntrip

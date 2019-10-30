@@ -9,19 +9,18 @@
 #include "nodecfg.hpp"
 #include "rclcpp/rclcpp.hpp"
 
-namespace config
-{
+namespace config {
 /**
  * ROS2 Node careing about configuration/instantiation/update
  **/
 
 class ConfigNode : public rclcpp::Node
 {
-   public:
+  public:
     /**
      * Constructor
      *
-     * @param const rclcpp::NodeOptions& options Node options the config node should be initilaized
+     * @param options Node options the config node should be initilaized
      */
     ConfigNode(const rclcpp::NodeOptions& options);
     /**
@@ -29,14 +28,14 @@ class ConfigNode : public rclcpp::Node
      */
     virtual ~ConfigNode();
 
-   private:
-    // Indicates in case of false shutdown of all threads
+  private:
+    //!Indicates in case of false shutdown of all threads
     std::atomic<bool> m_running;
-    // Thread object for worker thread
+    //!Thread object for worker thread
     std::thread* m_executor;
-    // Config and working path for the system
+    //!Config and working path for the system
     rclcpp::Parameter m_path;
-    // Pointer to the configuration handler instance
+    //!Pointer to the configuration handler instance
     ConfigurationHandler* m_config_handler;
     /**
      * Worker thread calling Configuration handler and caring about life cycle management
@@ -55,10 +54,10 @@ class ConfigNode : public rclcpp::Node
     /**
      * Life Cycle: helper function to set a state to a specific value
      *
-     * @param std::uint8_t transition requested transition according to transition states from ROS2
-     * @param std::chrono::seconds time_out Timeout time for requested transition
-     * @param NodeCfg& node Node Cfg object holding neccesary information to check/set states
+     * @param transition requested transition according to transition states from ROS2
+     * @param time_out Timeout time for requested transition
+     * @param node Node Cfg object holding neccesary information to check/set states
      */
     bool change_state(std::uint8_t transition, std::chrono::seconds time_out, NodeCfg& node);
 };
-}  // namespace config
+} // namespace config

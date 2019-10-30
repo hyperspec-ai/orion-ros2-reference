@@ -1,16 +1,15 @@
 #pragma once
 #include <cstdint>
 #include <vector>
-namespace ntrip
-{
+namespace ntrip {
 class NtripCallback
 {
-   public:
+  public:
     /**
      * Callbak for received data
-     * @param std::vector<uint8_t> data data holds one transmission, can include multiple RTCM
-     *sentences
+     * @param data data holds one transmission, can include multiple RTCM
+     * sentences
      **/
     virtual void data_received(std::vector<uint8_t> data) = 0;
 };
-}  // namespace ntrip
+} // namespace ntrip

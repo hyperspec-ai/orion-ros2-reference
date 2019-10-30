@@ -12,7 +12,7 @@ class UbxNavEoe : public UbxReceiveMessage
     /**
     * Constructor
     *  
-    * @param UbxCbInterface* cb Pointer to class implementing a call back interface for this message
+    * @param cb Pointer to class implementing a call back interface for this message
     */
     explicit UbxNavEoe(UbxCbInterface* cb);
     /**

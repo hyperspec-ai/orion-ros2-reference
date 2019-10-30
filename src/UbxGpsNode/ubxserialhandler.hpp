@@ -1,17 +1,17 @@
 #pragma once
-#include <errno.h>    // Error number definitions
-#include <fcntl.h>    // File control definitions
-#include <stdio.h>    // Standard input/output definitions
-#include <string.h>   // String function definitions
-#include <termios.h>  // POSIX terminal control definitions (struct termios)
-#include <unistd.h>   // UNIX standard function definitions
+#include <errno.h> // Error number definitions
+#include <fcntl.h> // File control definitions
+#include <stdio.h> // Standard input/output definitions
+#include <string.h> // String function definitions
+#include <termios.h> // POSIX terminal control definitions (struct termios)
+#include <unistd.h> // UNIX standard function definitions
 #include <atomic>
 #include <iostream>
 #include <mutex>
 #include <queue>
 #include <sstream>
 #include <string>
-#include <system_error>  // For throwing std::system_error
+#include <system_error> // For throwing std::system_error
 #include <thread>
 #include <unordered_map>
 #include <vector>
@@ -24,13 +24,11 @@
  **/
 class UbxSerialHandler : public UbxCbInterface
 {
-   public:
+  public:
     /**
      * Constructor
      *
-     * @param const std::string& port path to serial port /dev/tty etc.
-     * @param const std::string& path_to_str2str path to rtklib stream 2 stream client
-     * @param const std::string& ntrip_parameter parameter to start str2str
+     * @param port path to serial port /dev/tty etc.          
      */
     explicit UbxSerialHandler(const std::string& port);
 
@@ -40,13 +38,13 @@ class UbxSerialHandler : public UbxCbInterface
      * Function used to enque config messages before communication is started. This transfers
      * ownership of the message memory to the UbxSerialHandler.
      *
-     * @param const UbxMessage msg config message to be send
+     * @param msg config message to be send
      */
     bool enqueue_ubx_cfg_message(UbxMessage* msg);
     /**
      * Function to register a specifc message to be received
      *
-     * @param const UbxMessage msg recieve message to be send
+     * @param msg recieve message to be send
      */
     bool register_receive_msg(UbxReceiveMessage* msg);
     /**
@@ -55,24 +53,28 @@ class UbxSerialHandler : public UbxCbInterface
      * @return true in case init was successfull
      */
     bool init_comport();
+
     /**
-     * Call back for config message handling, defined by UbxReceiveMessage
+     * @brief  Call back for config message handling, defined by UbxReceiveMessage
+     * 
+     * @param id message id
+     * @param msg pointer to message
      */
+
     void message_received(UbxMessage::Identifier id, const UbxMessage* msg);
-    /**
-     * Kills all str2str instances and restart
-     */
-    void restart_str2str();
     /**
      * Close ports and threads
      */
     void close_port();
+
     /**
-     * Close ports and threads
+     * @brief adds a rtcm message for sending in send queu
+     * 
+     * @param msg message buffer to be send
      */
     void add_rtcm_message(std::vector<uint8_t>& msg);
 
-   private:
+  private:
     /// Serial port path
     std::string m_port_name;
     /// Control flag to shutdown threads

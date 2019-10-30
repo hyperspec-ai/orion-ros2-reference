@@ -6,51 +6,47 @@
 #include "class_loader/class_loader.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/node_factory.hpp"
-namespace config
-{
+namespace config {
 /*!
  * Execution Context reflects a ROS2 Singlethreaded executor enabling intraprocess communication
  * between the nodes inside a execution contex
  **/
 class ExecutionContext
 {
-   private:
+  private:
     /**
      * Spinning thread for ROS2 single thread executor
      * @return true in case unload was succesfull
      */
     void worker_thread();
-    // Helper function for logging
-    inline rclcpp::Logger get_logger()
-    {
-        return (rclcpp::get_logger("CFG_EXC_" + m_name));
-    }
-    // ROS2 Single thread executor
+    //! Helper function for logging
+    inline rclcpp::Logger get_logger() { return (rclcpp::get_logger("CFG_EXC_" + m_name)); }
+    //! ROS2 Single thread executor
     rclcpp::executors::SingleThreadedExecutor m_executor;
-    // Reference to thread object for worker thread
+    //! Reference to thread object for worker thread
     std::thread* m_worker_thread;
-    // Name of the execution context
+    //! Name of the execution context
     std::string m_name;
-    // Thread controll variable for shutdown
+    //! Thread controll variable for shutdown
     std::atomic<bool> m_running;
-    // Collection of executed nodes
+    //! Collection of executed nodes
     std::vector<rclcpp_components::NodeInstanceWrapper> m_node_wrappers;
-    // Collection of class loader per node
+    //! Collection of class loader per node
     std::vector<class_loader::ClassLoader*> m_loaders;
 
-   public:
+  public:
     /**
      * Constructor
      *
-     * @param std::string name Execution context name
+     * @param name Execution context name
      */
     ExecutionContext(std::string name);
     /**
      * Adds a node to the execution context defined by the li in the lib_path
      *
-     * @param std::string name Node Name
-     * @param std::string lib_path path to library, including filename (.so)
-     * @param rclcpp::NodeOptions& options Node options generated from system config file parameter
+     * @param name Node Name
+     * @param lib_path path to library, including filename (.so)
+     * @param options Node options generated from system config file parameter
      * section
      *
      * @return true if instantiation from lib file was sucessfull
@@ -69,4 +65,4 @@ class ExecutionContext
      **/
     ~ExecutionContext();
 };
-}  // namespace config
+} // namespace config

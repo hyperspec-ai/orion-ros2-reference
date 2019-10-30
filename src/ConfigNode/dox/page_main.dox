@@ -28,5 +28,7 @@ How to Configure:
 - \ref sys_conf_ex
 - \ref config_process
 
-Implementation of the basic ROS2 Node of the config::ConfigNode.
+Implemented additional nodes
+- \ref rtcm_node
+
  **/

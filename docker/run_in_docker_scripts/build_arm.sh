@@ -13,6 +13,7 @@ export ROS2_INSTALL_PATH=/opt/sysroot/opt/ros2_ws/install
 export CMAKE_FIND_ROOT_PATH=/opt/ws_kros/build
 export PYTHON_SOABI=cpython-36m-$TARGET_TRIPLE
 export PWD=/opt/sysroot/opt/ros2_ws
+
 rm -R build
 rm -R install_arm
 colcon build \

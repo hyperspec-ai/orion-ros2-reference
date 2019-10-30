@@ -13,36 +13,36 @@
 #include <vector>
 #include "mqtt/async_client.h"
 #include "mqttcallback.hpp"
-#include "rclcpp/rclcpp.hpp"
-namespace config
-{
+#include <rclcpp/rclcpp.hpp>
+namespace config {
 class MqttBackend : public virtual mqtt::callback
 {
-   public:
+  public:
     /*!
      * @brief Constructor
      */
     MqttBackend();
     /*!
-     * @brief Initialize Function for the mqtt backend connection, with call of init also the
-     * background processes are started
-     * @param [in] std::string key Field name/Key in JSON File
-     * @param [in] std::string value Value as string
-     * @param [in] valuetype_t valuetype Valuetype for encoding
+     * @brief Initialize Function for the mqtt backend connection, with call of init also the background processes are started
+     * @param [in] host hostname
+     * @param [in] veh_name vehicle name/id
+     * @param [in] user mqtt user 
+     * @param [in] passwd mqtt password
+     * @param [in] mqttcb Implementation of mqtt call back interface
      */
-    void init(const std::string& host, const std::string& veh_name, const std::string& user,
-              const std::string& passwd, MqttCallback* mqttcb);
+    void init(const std::string& host,
+              const std::string& veh_name,
+              const std::string& user,
+              const std::string& passwd,
+              MqttCallback* mqttcb);
     /*!
-     * @brief Registers the given sensor interface for staus monitoring
-     * @param [in] Sensor_interface* sens Pointer to sensor interface
+     * @brief Shutdown mqtt connection and end background threads
      */
     void shutdown();
 
-   private:
-    inline rclcpp::Logger get_logger()
-    {
-        return (rclcpp::get_logger("CFG_MQB"));
-    }
+  private:
+    //! Small helper function to get the right logger
+    inline rclcpp::Logger get_logger() { return (rclcpp::get_logger("CFG_MQB")); }
     /*!
      * @brief Thread publishing monitor information
      */
@@ -53,17 +53,17 @@ class MqttBackend : public virtual mqtt::callback
     void mqtt_connect();
     /*!
      * @brief Call back for lost mqtt broker connection
-     * @param [in] const std::string& cause Cause of connection lost
+     * @param [in] cause Cause of connection lost
      */
     void connection_lost(const std::string& cause);
     /*!
      * @brief Call back for delivery completed feedback
-     * @param [in] mqtt::delivery_token_ptr tok Status information for a publich operation
+     * @param [in] tok Status information for a publich operation
      */
     void delivery_complete(mqtt::delivery_token_ptr tok);
     /*!
      * @brief Call back for delivery message arrived
-     * @param [in] mqtt::const_message_ptr msg received message
+     * @param [in] msg received message
      */
     void message_arrived(mqtt::const_message_ptr msg);
     /*!
@@ -104,4 +104,4 @@ class MqttBackend : public virtual mqtt::callback
      **/
     MqttCallback* m_mqttcb;
 };
-}  // namespace config
+} // namespace config

@@ -7,42 +7,38 @@
 #include "nodecfg.hpp"
 #include "rclcpp/rclcpp.hpp"
 
-namespace config
-{
+namespace config {
 class LifecycleManager
 {
-   private:
-    // Configured nodes with lifecycle interface
+  private:
+    //! Configured nodes with lifecycle interface
     std::vector<NodeCfg> m_configured_nodes;
-    // Reference to ConfigNode, needed to create life cylce client services
-    rclcpp::Node *m_config_node;
-    // Helper for logging
-    inline rclcpp::Logger get_logger()
-    {
-        return (rclcpp::get_logger("CFG_LCM"));
-    }
+    //! Reference to ConfigNode, needed to create life cylce client services
+    rclcpp::Node* m_config_node;
+    //! Helper for logging
+    inline rclcpp::Logger get_logger() { return (rclcpp::get_logger("CFG_LCM")); }
 
-   public:
+  public:
     /**
      * Constructor
-     * @param rclcpp::Node *node Reference to ConfigNode
+     * @param node Reference to ConfigNode
      **/
-    LifecycleManager(rclcpp::Node *node);
+    LifecycleManager(rclcpp::Node* node);
     /**
      * Change the state of the node
      *
-     * @param std::uint8_t transition tranisition accroding to lifecycle_msgs::msg::Transition
-     * @param std::chrono::seconds time_out timeout in seconds
-     * @param NodeCfg &node node config to change the state for
+     * @param transition tranisition accroding to lifecycle_msgs::msg::Transition
+     * @param time_out timeout in seconds
+     * @param node node config to change the state for
      *
      * @return true succesfull state change
      **/
-    bool change_state(std::uint8_t transition, std::chrono::seconds time_out, NodeCfg &node);
+    bool change_state(std::uint8_t transition, std::chrono::seconds time_out, NodeCfg& node);
     /**
      * Change the state of all nodes registered
      *
-     * @param std::uint8_t transition tranisition accroding to lifecycle_msgs::msg::Transition
-     * @param std::chrono::seconds time_out timeout in seconds
+     * @param transition tranisition accroding to lifecycle_msgs::msg::Transition
+     * @param time_out timeout in seconds
      *
      * @return true succesfull state change
      **/
@@ -80,9 +76,13 @@ class LifecycleManager
     /**
      * Adds a node to the lifecycl manager
      *
-     * @param NodeCfg ncf Node Config to register
+     * @param ncf Node Config to register
      **/
     void add_node(NodeCfg ncf);
+    /**
+     * @brief Destroy the Lifecycle Manager object
+     * 
+     */
     ~LifecycleManager();
 };
-}  // namespace config
+} // namespace config

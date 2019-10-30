@@ -13,7 +13,7 @@ class UbxAckNak : public UbxReceiveMessage
     /**
     * Constructor
     *  
-    * @param Pointer to class implementing a call back interface for this message
+    * @param cb Pointer to class implementing a call back interface for this message
     */
     explicit UbxAckNak(UbxCbInterface* cb);
     /**

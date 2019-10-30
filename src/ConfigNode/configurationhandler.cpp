@@ -140,8 +140,8 @@ void ConfigurationHandler::message_recieved(mqtt::const_message_ptr msg)
 {
     /**
      * Get topic, curently there are two topics supported
-     * /<vehicle_name>/command --> Commands to change the runtime state
-     * /<vehicle_name>/config --> to send a new system configuration to the vehicle
+     * /\<vehicle_name\>/command --> Commands to change the runtime state
+     * /\<vehicle_name\>/config --> to send a new system configuration to the vehicle
      **/
     std::string topic = msg->get_topic();
     if(topic.compare("/" + m_vehicle + "/command") == 0)

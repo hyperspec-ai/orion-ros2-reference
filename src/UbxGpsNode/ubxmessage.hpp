@@ -10,7 +10,7 @@
  */
 class UbxMessage
 {
-   public:
+  public:
     ///< This decsribes the class of the message
     enum message_class_t
     {
@@ -54,8 +54,9 @@ class UbxMessage
 
         Identifier() : m_class_id(CLASS_INVALID), m_message_id(MSG_INVALID) {}
 
-        Identifier(message_class_t class_id, message_id_t msg_id)
-            : m_class_id(class_id), m_message_id(msg_id)
+        Identifier(message_class_t class_id, message_id_t msg_id) :
+            m_class_id(class_id),
+            m_message_id(msg_id)
         {
         }
 
@@ -70,9 +71,9 @@ class UbxMessage
     /**
      * Constructor
      *
-     * @param uint8_t class_id class type of mesage (ubx protocol specific)
-     * @param uint8_t msg_id message id of mesage (ubx protocol specific)
-     * @param const bool is_config flag is true in case this message is a config message
+     * @param class_id class type of mesage (ubx protocol specific)
+     * @param msg_id message id of mesage (ubx protocol specific)
+     * @param is_config flag is true in case this message is a config message
      */
     explicit UbxMessage(message_class_t class_id, message_id_t msg_id, bool is_config);
 
@@ -87,7 +88,8 @@ class UbxMessage
      * @param size_t    offset Byte position to read from
      * @return read value
      */
-    template <typename T> T read_payload(size_t offset) const;
+    template<typename T>
+    T read_payload(size_t offset) const;
 
     /**
      * Writes data to the give position.
@@ -100,36 +102,33 @@ class UbxMessage
      * @param T         value to write
      * @return          size in bytes written
      */
-    template <typename T> size_t write_payload(size_t offset, T value);
+    template<typename T>
+    size_t write_payload(size_t offset, T value);
 
     /**
      * Returns the class/msg_id combination of the message
      *
      * @return Identifier with the message and class id
      */
-    Identifier get_identifier() const
-    {
-        return Identifier(m_class_id, m_msg_id);
-    };
+    Identifier get_identifier() const { return Identifier(m_class_id, m_msg_id); };
 
     /**
      *  Returns the size of the entire ubx message in bytes
+     *  @return Message size in byte
      */
     size_t get_message_size() const;
 
     /**
      * Returns the size of the payload
+     * @return payload size in byte
      */
-    size_t get_payload_size() const
-    {
-        return m_payload.size();
-    }
+    size_t get_payload_size() const { return m_payload.size(); }
 
     /**
      * Writes the messsage into the passed buffer
      *
-     * @param uint8_t* buffer  buffer copied data to
-     * @param const uint16_t size  buffer size
+     * @param buffer  buffer copied data to
+     * @param  size  buffer size
      * @return number of copied bytes
      */
     size_t write_message_to(uint8_t* buffer, size_t size) const;
@@ -138,12 +137,12 @@ class UbxMessage
      * Reads message from byte buffer and initialized this UbxMessage
      * instance with the messages content.
      *
-     * @param uint8_t* buffer  buffer copied data from
-     * @param const uint16_t length buffer size
+     * @param buffer buffer copied data from
+     * @param length buffer size
      */
     void read_message_from(const uint8_t* buffer, const uint16_t length);
 
-   private:
+  private:
     /// Class id of message
     message_class_t m_class_id;
     /// Message id
@@ -156,17 +155,22 @@ class UbxMessage
 };
 
 // Hash implementation for UbxMessage::Identifier
-namespace std
-{
-template <> struct hash<UbxMessage::Identifier>
+namespace std {
+template<>
+struct hash<UbxMessage::Identifier>
 {
     typedef UbxMessage::Identifier argument_type;
     typedef std::size_t result_type;
-
+    /**
+     * @brief Generates a simple has for a message based on class and id
+     * 
+     * @param key return valus in form of hash
+     * @return result_type 
+     */
     result_type operator()(argument_type const& key) const noexcept
     {
         return static_cast<result_type>((uint16_t)key.m_message_id |
                                         (uint16_t)(key.m_class_id << 8));
     }
 };
-}  // namespace std
+} // namespace std

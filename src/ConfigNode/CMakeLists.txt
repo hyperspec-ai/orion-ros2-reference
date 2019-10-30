@@ -33,12 +33,24 @@ mqttbackend.cpp
 lifecyclemanager.cpp
   
 )
-target_include_directories(ConfigNode PUBLIC  
-  "./"
-  "../../common_src/"
-  "../../common_src/json/include"
-  "/opt/sysroot/usr/local/include"
-)
+IF(CMAKE_CROSSCOMPILING)
+  target_include_directories(ConfigNode PRIVATE  
+    "./"
+    "../../common_src/"
+    "../../common_src/json/include"
+    SYSTEM "${CMAKE_SYSROOT}/usr/local/include"
+  )  
+ELSE(CMAKE_CROSSCOMPILING)
+  target_include_directories(ConfigNode PRIVATE  
+    "./"
+    "../../common_src/"
+    "../../common_src/json/include"
+    "/usr/local/include"
+  )  
+ENDIF(CMAKE_CROSSCOMPILING)
+
+
+
 add_subdirectory(../../common_src/ ../install/commonLib/lib/)
 
 target_link_libraries(ConfigNode
@@ -74,10 +86,22 @@ endif()
 add_executable(ConfigNode_exec
   exec_entry.cpp)
 
-target_include_directories(ConfigNode_exec PRIVATE
-  "./"
-  "./json/include"
-)
+
+IF(CMAKE_CROSSCOMPILING)
+  target_include_directories(ConfigNode_exec PRIVATE  
+    "./"
+    "../../common_src/"
+    "../../common_src/json/include"
+    SYSTEM PUBLIC "/opt/sysroot/usr/local/include"
+  )  
+ELSE(CMAKE_CROSSCOMPILING)
+  target_include_directories(ConfigNode_exec PRIVATE  
+    "./"
+    "../../common_src/"
+    "../../common_src/json/include"
+    "/usr/local/include"
+  )  
+ENDIF(CMAKE_CROSSCOMPILING)
 
 target_link_libraries(ConfigNode_exec
 ConfigNode

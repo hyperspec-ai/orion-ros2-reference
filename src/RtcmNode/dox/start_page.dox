@@ -1,0 +1,20 @@
+/**
+\page rtcm_node Orion RtcmNode
+
+The rtcm node intefaces a simple ntrip client forwarding currently a fixed position as GGA to the NTRIP Caster and receives correction information in form of 
+RTCM3 encoded information. This can be subscribed under /\<node_name\>/rtcm_data as rtcm_msgs::msg::RtkRTCM. This message just contains a byte buffer+length.
+The node makes a simple size/prototcoll check.
+
+The configuartion information and example can be found under \ref rtcm_config
+
+\section rtcm_todo RTCM todo/known issues
+
+Updating send GGA Sentence
+
+\section rtcm_dev_internal Developmer Infos
+The nodes consists mainly of 3 Classes
+- rtcm::RtcmNode the node implementation
+- ntrip::NtripClient the ntrip client implementation, based on simple http handling/authentication
+- ntrip::Socket a cpp socket wrapper
+
+**/
