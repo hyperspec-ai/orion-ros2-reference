@@ -1,4 +1,11 @@
 node {
+      
+  def nextBranchMap = [:]
+  nextBranchMap['develop'] = 'qa'
+  nextBranchMap['qa'] = 'staging'
+  nextBranchMap['staging'] = 'master'
+  nextBranchMap['master'] = 'master'
+  
   try {
     notifyBuild('STARTED')
 
@@ -39,7 +46,7 @@ node {
       }
     }
     
-    stage("last-changes") {
+    stage("Individual Repo Push") {
       if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'qa' || env.BRANCH_NAME == 'staging' ||env.BRANCH_NAME == 'develop') {
         def publisher = LastChanges.getLastChangesPublisher "LAST_SUCCESSFUL_BUILD", "SIDE", "LINE", true, true, "", "", "", "", ""
           publisher.publishLastChanges()
@@ -86,11 +93,19 @@ node {
           }
         }
       }
-      currentBuild.result = "SUCCESSFUL"   
+     }
+    
+     stage('Git Merge/Push Next Environment') {
+      if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'qa' || env.BRANCH_NAME == 'staging' ||env.BRANCH_NAME == 'develop') {
+        git url: 'git@github.com:go360-io/orion-ros2-reference.git', branch: nextBranchMap[env.BRANCH_NAME]
+        sh 'git merge '+env.BRANCH_NAME
+        sh "git push origin "+ nextBranchMap[env.BRANCH_NAME]
+      }
     }
  } catch (e) {
     // If there was an exception thrown, the build failed
     currentBuild.result = "FAILED"
+    println(e);
     throw e
   } finally {
     // Success or failure, always send notifications
