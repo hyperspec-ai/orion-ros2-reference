@@ -127,16 +127,30 @@ def notifyBuild(String buildStatus = 'STARTED') {
     <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>"""
 
   // Override default values based on build status
+  println("------------------------------Before------------------------------------------")
+  println("buildStatus : ${buildStatus}")
+  println("colorName : ${colorName}")
+  println("colorCode : ${colorCode}")
+  println("------------------------------Before------------------------------------------")
+  // Override default values based on build status
   if (buildStatus == 'STARTED') {
+    println("Condition buildStatus == STARTED")
     color = 'YELLOW'
     colorCode = '#FFFF00'
   } else if (buildStatus == 'FAILED') {
+    println("Condition buildStatus == FAILED")
     color = 'RED'
     colorCode = '#FF0000'
   } else {
+    println("Condition else")
     color = 'GREEN'
     colorCode = '#00FF00'
   }
+  println("------------------------------After------------------------------------------")
+  println("buildStatus : ${buildStatus}")
+  println("colorName : ${colorName}")
+  println("colorCode : ${colorCode}")
+  println("------------------------------After------------------------------------------")
 
   // Send notifications
   slackSend(color: colorCode, message: summary)
