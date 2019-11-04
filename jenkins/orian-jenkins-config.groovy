@@ -102,6 +102,7 @@ node {
         sh "git push origin "+ nextBranchMap[env.BRANCH_NAME]
       }
     }
+ currentBuild.result = 'SUCCESS'
  } catch (e) {
     // If there was an exception thrown, the build failed
     currentBuild.result = "FAILED"
