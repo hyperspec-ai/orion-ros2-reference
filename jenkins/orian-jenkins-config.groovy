@@ -97,7 +97,7 @@ node {
     
      stage('Git Merge/Push Next Environment') {
       if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'qa' || env.BRANCH_NAME == 'staging' ||env.BRANCH_NAME == 'develop') {
-        git url: 'git@github.com:go360-io/orion-ros2-reference.git', branch: nextBranchMap[env.BRANCH_NAME]
+        git url: 'https://go360-jenkins:Go360.io@github.com/go360-io/orion-ros2-reference.git', branch: nextBranchMap[env.BRANCH_NAME]
         sh 'git merge '+env.BRANCH_NAME
         sh "git push origin "+ nextBranchMap[env.BRANCH_NAME]
       }
