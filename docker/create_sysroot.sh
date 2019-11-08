@@ -29,3 +29,11 @@ rsync $RSYNC_FLAGS -avz --copy-unsafe-links \
 # sync ros2 to sysroot
 rsync $RSYNC_FLAGS -avz --copy-unsafe-links \
     -e ssh $SSH_CONNECTION_STRING:/opt/ros2_ws $SYSROOT_HOST_PATH/opt/
+
+# ignore some packages when cross compiling ros2
+touch $SYSROOT_HOST_PATH/opt/ros2_ws/src/ros2/rviz/COLCON_IGNORE
+touch $SYSROOT_HOST_PATH/opt/ros2_ws/src/ros-visualization/COLCON_IGNORE
+touch $SYSROOT_HOST_PATH/opt/ros2_ws/src/ros/ros_tutorials/turtlesim/COLCON_IGNORE
+
+# link all tegra libs into /usr/lib/aarch64-linux-gnu/ folder
+ln -f -s $SYSROOT_HOST_PATH/usr/lib/aarch64-linux-gnu/tegra/*.so $SYSROOT_HOST_PATH/usr/lib/aarch64-linux-gnu/
