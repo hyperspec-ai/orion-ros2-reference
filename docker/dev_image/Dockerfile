@@ -1,4 +1,4 @@
-# This is an adapted file by DAS to geneate a 
+# This is an adapted file by DAS to geneate a
 ARG FROM_IMAGE=ubuntu:bionic
 FROM $FROM_IMAGE
 
@@ -82,21 +82,21 @@ RUN apt-get update && apt-get install -q -y \
   wget \
   libgstreamer1.0-0 \
   gstreamer1.0-plugins-base \
-  gstreamer1.0-plugins-good \ 
-  gstreamer1.0-plugins-bad \ 
-  gstreamer1.0-plugins-ugly \ 
-  gstreamer1.0-libav \ 
-  gstreamer1.0-doc \ 
+  gstreamer1.0-plugins-good \
+  gstreamer1.0-plugins-bad \
+  gstreamer1.0-plugins-ugly \
+  gstreamer1.0-libav \
+  gstreamer1.0-doc \
   gstreamer1.0-tools \
-  gstreamer1.0-x \ 
+  gstreamer1.0-x \
   gstreamer1.0-alsa \
   gstreamer1.0-gl \
-  gstreamer1.0-gtk3 \ 
+  gstreamer1.0-gtk3 \
   gstreamer1.0-qt5 \
   gstreamer1.0-pulseaudio \
   libgstreamer1.0-dev \
   libgstreamer-plugins-base1.0-dev \
-  rtklib \     
+  rtklib \
   libcurl4-openssl-dev \
   libarchive-dev \
   libarchive13 \
@@ -104,7 +104,7 @@ RUN apt-get update && apt-get install -q -y \
   && rm -rf /var/lib/apt/lists/*
 #unpack and install spinnaker api
 RUN tar -zxvf /spinnaker-1.24.0.60-amd64-Ubuntu18.04-pkg.tar.gz -C /
-WORKDIR /spinnaker-1.24.0.60-amd64 
+WORKDIR /spinnaker-1.24.0.60-amd64
 RUN dpkg -i 'libspinnaker-1.24.0.60_amd64.deb' && dpkg -i 'libspinnaker-1.24.0.60_amd64-dev.deb' && dpkg -i 'libspinnaker-c-1.24.0.60_amd64.deb' \
   && dpkg -i 'libspinnaker-c-1.24.0.60_amd64-dev.deb' \
   && dpkg -i 'libspinvideo-1.24.0.60_amd64.deb' \
@@ -130,15 +130,11 @@ RUN wget https://raw.githubusercontent.com/ros2/ros2/$ROS_DISTRO-release/ros2.re
 RUN apt-get update && rosdep install -y \
   --from-paths src \
   --ignore-src \
-  --skip-keys "console_bridge fastcdr fastrtps libopensplice67 libopensplice69 rti-connext-dds-5.3.1 urdfdom_headers" \
-  && rm -rf /var/lib/apt/lists/*
+  --skip-keys "console_bridge fastcdr fastrtps libopensplice67 libopensplice69 rti-connext-dds-5.3.1 urdfdom_headers"
+
 
 # build source
-RUN colcon \
-  build \
-  --cmake-args -DSECURITY=ON --no-warn-unused-cli \
-  --symlink-install
-
+RUN colcon build --cmake-args -DSECURITY=ON --no-warn-unused-cli --symlink-install
 #install paho lib
 RUN mkdir /paho \
   && cd /paho \
@@ -153,6 +149,10 @@ RUN mkdir /paho \
   && cmake -Bbuild -H. -DPAHO_BUILD_DOCUMENTATION=FALSE -DPAHO_BUILD_SAMPLES=TRUE -DCMAKE_PREFIX_PATH=/paho/paho.mqtt.c/build/install \
   && cmake --build build/ --target install && ldconfig
 
+RUN apt-get install -q -y g++-aarch64-linux-gnu \
+  g++-arm-linux-gnueabihf \
+  pkg-config-aarch64-linux-gnu \
+  && rm -rf /var/lib/apt/lists/*
 
 
 # setup entrypoint
