@@ -3,92 +3,92 @@
 # CI/CD Setup Steps
 
 ## Install Jenkins
-1. Create EC2 Instance with 200 G disk space from amazon console
-  1.1 Make sure security group has 8080 accessible to all 
-2. SSH in to the instance and run following commands to install Java 8
-  2.1 $sudo apt update -y
-  2.2 $sudo apt install openjdk-8-jdk -y
+1. Create EC2 Instance with 200 G disk space from amazon console <br />
+  1.1 Make sure security group has 8080 accessible to all <br />
+2. SSH in to the instance and run following commands to install Java 8 <br />
+  2.1 $sudo apt update -y <br />
+  2.2 $sudo apt install openjdk-8-jdk -y <br />
 
-3. Visit https://pkg.jenkins.io/debian-stable/ and copy the installation commands which are as below
-  3.1 $wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+3. Visit https://pkg.jenkins.io/debian-stable/ and copy the installation commands which are as below <br />
+  3.1 $wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add - <br />
 
-4. Then add the following entry in your /etc/apt/sources.list
-  4.1 $deb https://pkg.jenkins.io/debian-stable binary/
+4. Then add the following entry in your /etc/apt/sources.list <br />
+  4.1 $deb https://pkg.jenkins.io/debian-stable binary/ <br />
 
-5. Run the following command to install jenkins package
-  5.1 $sudo apt-get update -y
-  5.2 $sudo apt-get install jenkins -y
+5. Run the following command to install jenkins package <br />
+  5.1 $sudo apt-get update -y <br />
+  5.2 $sudo apt-get install jenkins -y <br />
 
-6. Start Jenkins Server as a Service and Enable at boot time
-  6.1 $sudo systemctl start jenkins
-  6.2 $sudo systemctl enable jenkins
-  6.3 $sudo systemctl status jenkins
+6. Start Jenkins Server as a Service and Enable at boot time <br />
+  6.1 $sudo systemctl start jenkins <br />
+  6.2 $sudo systemctl enable jenkins <br />
+  6.3 $sudo systemctl status jenkins <br />
 
-7. Copy the initial admin password which will be asked when you launch web ui first time
-  7.1 $sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+7. Copy the initial admin password which will be asked when you launch web ui first time <br />
+  7.1 $sudo cat /var/lib/jenkins/secrets/initialAdminPassword <br />
 
-8. Open Jenkins web ui `http://<publick ip>:8080/` and enter the password copied in previous step
+8. Open Jenkins web ui `http://<publick ip>:8080/` and enter the password copied in previous step <br />
 
-9. Install Suggested Plugins
+9. Install Suggested Plugins <br />
 
-10. Access Jenkins UI at http://<publick ip>:8080/
+10. Access Jenkins UI at http://<public ip>:8080/ <br />
 
 ----- This completes the Jenkins Installtion part ------
 
 ## Install plugins and necessary packages to configure jobs
 
-1. Ssh in to the instance give jenkins user sudo access without any password prompt
-  2.1 $sudo vi /etc/sudoers
-  Add the following line of code to the file. I added this after the root user in the User privilege specification section:
-  2.2 $jenkins ALL=(ALL) NOPASSWD:ALL
+1. Ssh in to the instance give jenkins user sudo access without any password prompt <br />
+  2.1 $sudo vi /etc/sudoers <br />
+  Add the following line of code to the file. I added this after the root user in the User privilege specification section: <br />
+  2.2 $jenkins ALL=(ALL) NOPASSWD:ALL <br />
 
-2. Switch to jenkins user
-  2.1 sudo su jenkins
-  2.2 cd //To take you to jenkins home directory which is /var/lib/jenkins for default jenkins installation
+2. Switch to jenkins user <br />
+  2.1 sudo su jenkins <br />
+  2.2 cd //To take you to jenkins home directory which is /var/lib/jenkins for default jenkins installation <br />
 
-3. Generate ssh keys and add them to github repo as deploy keys
-  3.1 $ssh-keygen
-  #keep pressing enter to choose the default options
-  3.2 $cat ~/.ssh/id_rsa.pub // or /var/lib/jenkins/.ssh/id_rsa.pub
-  3.3 Go to https://github.com/go360-io/orion-ros2-reference/settings
-  3.4 Click on `Deploy Keys` in the left panel
-  3.5 Click on `Add deploy key` and paste your public key here
-  3.6 Click on `Webhooks` and add `http://<publick ip>:8080/github-webhook/`
+3. Generate ssh keys and add them to github repo as deploy keys <br />
+  3.1 $ssh-keygen <br />
+  #keep pressing enter to choose the default options <br />
+  3.2 $cat ~/.ssh/id_rsa.pub // or /var/lib/jenkins/.ssh/id_rsa.pub <br />
+  3.3 Go to https://github.com/go360-io/orion-ros2-reference/settings <br />
+  3.4 Click on `Deploy Keys` in the left panel <br />
+  3.5 Click on `Add deploy key` and paste your public key here <br />
+  3.6 Click on `Webhooks` and add `http://<publick ip>:8080/github-webhook/` <br />
 
-4. Install necessary jenkins plugin
-  4.1 Login in to jenkins web ui
-  4.2 Go to `Jenkins` -> `Manage Jenkins` -> `Manage Plugins` install these additional plugins 
-    -> `GitHub Integration Plugin`
-    -> `Pipeline: Multibranch with defaults`
-    -> `Slack Notification Plugin`
+4. Install necessary jenkins plugin <br />
+  4.1 Login in to jenkins web ui <br />
+  4.2 Go to `Jenkins` -> `Manage Jenkins` -> `Manage Plugins` install these additional plugins  <br />
+    -> `GitHub Integration Plugin` <br />
+    -> `Pipeline: Multibranch with defaults` <br />
+    -> `Slack Notification Plugin` <br />
 
-5. Configure jenkins for Github integreation
-  5.1 Go to `Jenkins` -> `Manage Jenkins` -> `Configure System`
-  5.2 Scroll down and you will find the GitHub Pull Requests checkbox. In the Published Jenkins URL, add the repository link
-    -> `https://github.com/go360-io/orion-ros2-reference` save changes
+5. Configure jenkins for Github integreation <br />
+  5.1 Go to `Jenkins` -> `Manage Jenkins` -> `Configure System` <br />
+  5.2 Scroll down and you will find the GitHub Pull Requests checkbox. In the Published Jenkins URL, add the repository link <br />
+    -> `https://github.com/go360-io/orion-ros2-reference` save changes <br />
 
-6. Configure Build pipeline
-  6.1 Go to `Jenkins` -> `New`
-  6.2 Enter some name for the pipe line and choose type as `Multibranch pipeline with defaults`
-  6.3 Once created go to `Configure` 
-  6.4 Scroll down to `Build Configuration` choose `By default jenkinsfile` and enter script id as `orian-jenkins-config` (or whatever you choose you need to save the config file with same name/id)
-  6.5 check: Run default Jenkinsfile within Groovy sandbox and save
-  6.6 Go to `Manage Jenkins`->`Managed files`
-  6.7 Click `Add a new config` Choose Type as `Groovy file` and give id as `orian-jenkins-config` (Or whatever id you configured in the job in step 6.4)
-  6.8 Copy the contents from the file ./jenkins/orian-jenkins-config.groovy here and save
+6. Configure Build pipeline <br />
+  6.1 Go to `Jenkins` -> `New` <br />
+  6.2 Enter some name for the pipe line and choose type as `Multibranch pipeline with defaults` <br />
+  6.3 Once created go to `Configure`  <br />
+  6.4 Scroll down to `Build Configuration` choose `By default jenkinsfile` and enter script id as `orian-jenkins-config` (or whatever you choose you need to save the config file with same name/id) <br />
+  6.5 check: Run default Jenkinsfile within Groovy sandbox and save <br />
+  6.6 Go to `Manage Jenkins`->`Managed files` <br />
+  6.7 Click `Add a new config` Choose Type as `Groovy file` and give id as `orian-jenkins-config` (Or whatever id you configured in the job in step 6.4) <br />
+  6.8 Copy the contents from the file ./jenkins/orian-jenkins-config.groovy here and save <br />
 
-7. Configure slack notification (Optional)
-  7.1 Create a public channel say `orion-ci-cd-notification`
-  7.2 Go to `channel settings` and `Add an app`
-  7.3 Choose `Jenkins CI`
-  7.4 Once select it will generate a `token` for you
-  7.5 Go to `Jenkins` -> `Manage Jenkins` -> `Configure System`
-  7.6 Scroll down to `Slack`
-    -> Enter your `workspace` name
-    -> Credentials-> type `secret text` and use the `token` generated by slack 
-    -> Default Channel: `orion-ci-cd-notifications` (or whatever you named your public channel)
-    -> Click `Test Connection` to send a test notification
-    -> Uncomment `notifyBuild()` function call in the orian-jenkins-config file
+7. Configure slack notification (Optional) <br />
+  7.1 Create a public channel say `orion-ci-cd-notification` <br />
+  7.2 Go to `channel settings` and `Add an app` <br />
+  7.3 Choose `Jenkins CI` <br />
+  7.4 Once select it will generate a `token` for you <br />
+  7.5 Go to `Jenkins` -> `Manage Jenkins` -> `Configure System` <br />
+  7.6 Scroll down to `Slack` <br />
+    -> Enter your `workspace` name <br />
+    -> Credentials-> type `secret text` and use the `token` generated by slack  <br />
+    -> Default Channel: `orion-ci-cd-notifications` (or whatever you named your public channel) <br />
+    -> Click `Test Connection` to send a test notification <br />
+    -> Uncomment `notifyBuild()` function call in the orian-jenkins-config file <br />
 
 
 
