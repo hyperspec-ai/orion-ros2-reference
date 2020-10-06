@@ -1,0 +1,82 @@
+Comment,Description,Designator,Footprint,LibRef,Price,Quantity,Total Price,URL
+,,,,,,,,
+MS621FE-FL11E,"Rechargeable Battery, Coin Cell, Single Cell, 3 V, Lithium Manganese Dioxide, 5.5 mAh, Button Cell",BAT1,MS621FE-FL11E,battery,1.94,1,1.94,https://www.digikey.com/product-detail/en/seiko-instruments/MS621FE-FL11E/728-1057-ND/1889208
+KPT-1608SGC,LED Green 0603 case,"BOOT, LED1, NVME, PWR, USER",LED0603,LED,0.314,5,1.57,https://www.newark.com/kingbright/kpt-1608sgc/led-green-12mcd-568nm/dp/93T1594
+4u7,MLCC SMT Capacitor 4.7uF 0402,"C1, C2, C3, C4, C55, C57, C62",402,C_4u7_0402,0.14,7,0.98,https://www.digikey.com/product-detail/en/murata-electronics/GRM155R60J475ME87D/490-5408-1-ND/2175215
+100n,MLCC SMT Capacitor 100n 0402,"C5, C6, C7, C8, C9, C12, C19, C20, C26, C27, C30, C33, C36, C37, C38, C39, C40, C42, C43, C44, C45, C46, C48, C49, C50, C51, C52, C53, C54, C68, C69, C70, C71, C72, C73, C74, C75, C76, C77, C78, C79, C80, C81, C83, C84, C86, C87, C88, C89, C90, C92, C94, C95, C96",402,C_100n_0402,0.101,54,5.454,https://eu.mouser.com/ProductDetail/TDK/C1005X5R0J104K050BA?qs=NRhsANhppD8opYuaho4yHw%3D%3D
+100u,MLCC SMT Capacitor 100uF 1206,"C10, C11, C31",1206,C_100u_1206,1.1,3,3.3,https://www.digikey.com/product-detail/en/kemet/C1206C107M9PACTU/399-5620-1-ND/2057834
+10n,MLCC SMT Capacitor 10 nF 0402,"C13, C24",402,C_10n_0402,0.24,2,0.48,https://www.digikey.com/product-detail/en/avx-corporation/04025G103ZAT2A/478-1133-1-ND/564165
+100p,MLCC SMT Capacitor 100pF 0805,C14,805,C_100p_0805,0.18,1,0.18,https://www.digikey.com/product-detail/en/avx-corporation/08051A101JAT2A/478-1284-1-ND/564316
+47p,MLCC SMT Capacitor 47pF 0402,"C15, C29, C64",402,C_47p_0402,0.1,3,0.3,https://www.digikey.com/product-detail/en/kemet/C0402C470J5GACTU/399-1019-1-ND/411294
+47u,MLCC SMT Capacitor 47uF 0805,"C16, C17, C18, C34",805,C_47u_0805,0.91,4,3.64,https://www.digikey.com/product-detail/en/kemet/C0805C476M9PACTU/399-5506-1-ND/1950684
+2u2,MLCC SMT Capacitor 2.2uF 1206,"C21, C22, C23",1206,C_2u2_1206,1.15,3,3.45,https://www.digikey.com/product-detail/en/kemet/C1206C225J5RAC7800/399-13297-1-ND/5879267
+4n7,MLCC SMT Capacitor 4.7 nF 0402,C25,402,C_4n7_0402,0.18,1,0.18,https://www.digikey.com/product-detail/en/tdk-corporation/CGA2B3X7S2A472K050BB/445-6908-1-ND/2672926
+1u,MLCC SMT Capacitor 1uF 0402,"C28, C32, C66",402,C_1u_0402,0.001,3,0.003,https://www.newark.com/multicomp/mc0402f105z6r3ct/ceramic-capacitor-rohs-compliant/dp/33R0261
+10u,MLCC SMT Capacitor 10uF 0603,"C35, C47, C56, C58, C60, C63, C82, C85, C91, C93",603,C_10u_0603,0.9,10,9,https://eu.mouser.com/ProductDetail/Walsin/0603X106M6R3CT?qs=ZrPdAQfJ6DMy7QiOHAOYKg%3D%3D
+47n,MLCC SMT Capacitor 47nF 0402,C41,402,C_47n_0402,0.071,1,0.071,https://www.newark.com/multicomp/mc0402x473k160ct/smd-multilayer-ceramic-capacitor/dp/33R0717
+2u2,MLCC SMT Capacitor 2.2uF 0402,"C59, C65, C67",402,C_2u2_0402,0.38,3,1.14,https://www.digikey.com/product-detail/en/tdk-corporation/C1005X5R1A225K050BC/445-7392-1-ND/2733464
+100p,MLCC SMT Capacitor 100pF 0402,C61,402,C_100p_0402,0.1,1,0.1,https://www.digikey.com/product-detail/en/walsin-technology-corporation/0402N101J500CT/1292-1637-1-ND/9355641
+PDS760-13,DIODE SCHOTTKY 60V 7A POWERDI5,D1,PowerDI,Diode Schottky,0.96,1,0.96,https://www.digikey.com/product-detail/en/diodes-incorporated/PDS760-13/PDS760DICT-ND/776780
+1N4148WS,Diode small signal,"D2, D4, D13, D14, D15, D17",SOD-323,diode,0.16,6,0.96,https://www.digikey.com/product-detail/en/on-semiconductor/1N4148WS/1N4148WSFSCT-ND/1873821
+TPD2E009DBZR,"DIODE, SCHOTTKY, 30V, 200MA, SOT-23",D3,SOT-23,TPD2E009DBZR,0.56,1,0.56,https://www.digikey.com/product-detail/en/texas-instruments/TPD2E009DBZR/296-24657-1-ND/2092345
+TPD2E009DBZR,"DIODE, SCHOTTKY, 30V, 200MA, SOT-23","D5, D8, D9, D10, D11, D12",SOT-23s,TPD2E009DBZR,0.56,6,3.36,https://www.digikey.com/product-detail/en/texas-instruments/TPD2E009DBZR/296-24657-1-ND/2092345
+TPD4E05U06,ESD Suppressors 4-CH,"D6, D7",TPD4E05U06_PASS,TPD4E05U06,0.61,2,1.22,https://www.digikey.com/product-detail/en/texas-instruments/TPD4E05U06DQAR/296-35765-1-ND/3996768
+Value,PTC RESET 6V LO RHO 1206 4.50A,F1,,Fuse,2.05,1,2.05,https://www.digikey.com/product-detail/en/littelfuse-inc/1206L450SLWR/F5787CT-ND/3661929
+MX-22-23-2021,Pinhead connector with key,FAN,molex_2223-2021,molex_2223-2021,0.23,1,0.23,https://multishop.lv/lv/produkti/elektromateriali/savienojumi/signalu-savienojumi/signalu-savienojumi-rastera/signalu-savienojumi-raster-254mm/1/235106/molex-022232021-a-6373-02a222-socket-wire-board-male-kk-254-2.54mm-pin2-tht-tinned
+TCA9548ARGER,"TCA9548ARGER  I2C SWITCH W/ RESET, 8-CH, VQFN-24",IC1,VQFN-24,TCA9548A,1.58,1,1.58,https://www.digikey.com/product-detail/en/texas-instruments/TCA9548ARGER/296-39222-1-ND/5143219
+TPD8S009,8-Channel ESD Protection for DisplayPort and HDMI,"IC2, IC18",SON-15,TPD8S009,1.57,2,3.14,https://www.digikey.com/product-detail/en/texas-instruments/TPD8S009DSMR/296-23829-1-ND/1958765
+TPS54561-Q1,IC REG BCK SPLIT RAIL ADJ 10WSON,IC3,WSON-10_4x4,TPS54561,6.33,1,6.33,https://www.digikey.com/product-detail/en/texas-instruments/TPS54561QDPRRQ1/296-40804-1-ND/5178681
+TLV70018DCKT,"Voltage Regulator, 2V to 5.5V, 175mV Dropout, 1.8Vout, 200mAout","IC4, IC15",SC70-5,TLV700,0.46,2,0.92,https://www.digikey.com/product-detail/en/texas-instruments/TLV70018DCKT/296-25269-1-ND/2176447
+FT232RQ,USB to serial UART interface,IC5,QFN-32,FT232RQ,4.5,1,4.5,https://www.digikey.com/product-detail/en/ftdi-future-technology-devices-international-ltd/FT232RQ-REEL/768-1008-1-ND/1836403
+PCA9517ADP,IC REDRIVER I2C 1CH 8TSSOP,IC6,MSOP-8,PCA9517ADP,1.09,1,1.09,https://www.digikey.com/product-detail/en/nxp-usa-inc/PCA9517ADP-118/568-5926-1-ND/2531213
+HD3SS3220,IC DRP PORT CTLR USB-C 30WQFN,IC7,RNH0030A,HD3SS3220,3.51,1,3.51,https://www.digikey.com/product-detail/en/texas-instruments/HD3SS3220RNHT/296-49643-1-ND/9462616
+LM3671MF-3.3,DC/DC Buck Converter,"IC8, IC9",SOT23-5N,LM3671,1.39,2,2.78,https://www.digikey.com/product-detail/en/texas-instruments/LM3671MF-3-3-NOPB/LM3671MF-3-3-NOPBCT-ND/1590190
+TPS62823DLCT,IC REG BUCK ADJ 1A 8VSON-HR,IC10,TPS62823,TPS62823,1.73,1,1.73,https://www.digikey.com/product-detail/en/texas-instruments/TPS62823DLCT/296-50225-1-ND/9554642
+SN74LV1T125DCKR,"Buffer, 74LV1T125, 1.6 V to 5.5 V, SOT-23-5",IC11,SC70-5,SN74LV1T125,0.45,1,0.45,https://www.digikey.com/product-detail/en/texas-instruments/SN74LV1T125DCKR/296-37173-1-ND/4555590
+74HC00PW,"2 NAND Gate, 4 channel",IC12,TSSOP-14,74HC00PW,0.37,1,0.37,https://www.digikey.com/product-detail/en/nexperia-usa-inc/74HC00PW-118/1727-4060-1-ND/1965371
+SN74LVC1G126DCKR,"Buffer, tri-state",IC13,R-PDSO-G5,SN74LVC1G126,0.26,1,0.26,https://www.digikey.com/product-detail/en/texas-instruments/SN74LVC1G126DCKR/296-11606-1-ND/385745
+PCA9500PW,Remote 8bit I2C SMBus I/O expander w/ 2kbit EEPROM memory,IC14,TSSOP-16,PCA9500PW,1.96,1,1.96,https://www.digikey.com/product-detail/en/nxp-usa-inc/PCA9500PW-118/568-11918-1-ND/5221866
+NCP380HSNAJAAT1G,"POWER LOAD SWITCH, HIGH SIDE",IC16,TSOP-6,NCP380HSNAJAAT1G,0.71,1,0.71,https://www.digikey.com/product-detail/en/on-semiconductor/NCP380HSNAJAAT1G/NCP380HSNAJAAT1GOSCT-ND/2683266
+AT24CS01-ST,,IC17,SOT23-5,AT24CS01,0.181,1,0.181,https://eu.mouser.com/ProductDetail/Microchip-Technology-Atmel/AT24CS01-SSHM-T?qs=hwgJ97EQ0BmwHdwf88gC4w%3D%3D
+6.85E+11,CONN HDMI FEMALE R/A 19POS 2.6MM,J1,WE_685119136923,WE_685119136923,2.87,1,2.87,https://www.digikey.com/product-detail/en/w%C3%BCrth-elektronik/685119136923/732-2739-1-ND/2508681
+2129320-3,Mini Displayport Reverse Offset,J2,2129320-3,miniDP,2.22,1,2.22,https://www.digikey.com/product-detail/en/te-connectivity-amp-connectors/2129320-3/A120537CT-ND/5021748
+WE_7499110124,LAN-Transformer WE-RJ45LAN 10/100/1000 BaseT,J3,WE_7499110124,WE_7499111447,13.08,1,13.08,https://www.digikey.com/product-detail/en/w%C3%BCrth-elektronik/7499110124/732-4959-ND/4429034
+MJ-179PH,"DC Power Connector, Jack, 4 A, 1.95 mm, PCB Mount, Through Hole",J4,DC_SOCKET,DC_SOCKET,1.03,1,1.03,https://www.newark.com/multicomp/mj-179ph/dc-power-jack-4a-12vdc-pcb/dp/25R4773
+Molex 47346-0001,"USB - micro B Receptacle Connector 5 Position Surface Mount, Right Angle, Horizontal","J5, J9",CON-Molex-047346-0001,Micro USB B,0.95,2,1.9,https://www.digikey.com/product-detail/en/molex/0473460001/WM17141CT-ND/1782474
+467650301,HDMI,"J6, J7, J13, J14",HDMI-0467650301,467650301,1.82,4,7.38,https://www.digikey.com/product-detail/en/molex/0467650301/WM11254CT-ND/5287246
+MDT580M01001,CONN FEMALE 67POS 0.020 GOLD,J8,MDT580M01001,MDT580M01001,1.76,1,1.76,https://eu.mouser.com/ProductDetail/Amphenol-FCI/MDT580M01001?qs=ouNmo%2FJCrDBNzgGn7ixGyg%3D%3D
+PCA-6L-10-HU-3-T/R,"RECEPTACLE, FPC, ZIF, SMT, 0.5MM, 10WAY, UP",J10,PCA-10,PCA-10,0.84,1,0.84,https://www.tme.com/us/en-us/details/pca-6k-10-hu-3/connectors-ffc-fpc-0-5mm/adam-tech/pca-6l-10-hu-3-t-r/
+6.33E+11,USB 3.1 Type C Receptacle Horizontal THR WR-COM,J11,WE_632723300011,WE_632723300011,4.1,1,4.1,https://www.digikey.com/product-detail/en/w%C3%BCrth-elektronik/632723300011/732-9618-1-ND/5806673
+PCIE-064-02-X-D-EMS2-BG,PCI EXPRESS EDGE MOUNT ASSEMBLY,J12,SAMTEC_PCIE-064-02-X-D-EMS2-BG,PCIE-064-02-X-D-EMS2-BG,3.22,1,3.22,https://www.samtec.com/products/pcie-064-02-f-d-ems2-bg?utm_medium=buyNow&utm_source=findChips
+WE_7447798720,Fixed Inductors WE-PDF 1064 7.2uH 7.9A 12.8mOhm,L1,WE_7447798720,WE_7447798720,3.38,1,3.38,https://eu.mouser.com/ProductDetail/Wurth-Elektronik/7447798720?qs=E%2F%2FhvbtCqpOcNhO9pFvFww%3D%3D
+BLM18EG221SN1D,"MURATA  BLM18EG221SN1D  FERRITE BEAD, 0.05OHM, 2A, 0603","L2, L3",603,BLM18EG221SN1D,0.2,2,0.4,https://www.digikey.com/product-detail/en/murata-electronics/BLM18EG221SN1D/490-3992-1-ND/1016252
+LQH32PN2R2NN0L,"INDUCTOR, 2.2 ?H, ? 30%, 1212, 90 MHz, 0.073 ohm","L4, L6",LQH32PN2R2NN0L,LQH32PN2R2NN0L,0.403,2,0.806,https://eu.mouser.com/ProductDetail/Murata-Electronics/LQH32PN2R2NN0L?qs=%2F%252BYoplLUB5j820Q%2FIPuchQ%3D%3D
+IHLP1212AEERR47M11,FIXED IND 470NH 6.7A 15 MOHM SMD,L5,IHLP-1212AE,IHLP1212AEERR47M11,1.42,1,1.42,https://eu.mouser.com/ProductDetail/Vishay-Dale/IHLP1212AEERR47M11?qs=hVaL6jEgczp7NPonCjkBaw%3D%3D
+BLM18SG121TN1D,"FERRITE BEAD, 0.025OHM, 3A, 0603","L7, L8, L9, L10",603,BLM18SG121TN1D,0.13,4,0.52,https://www.digikey.com/product-detail/en/murata-electronics/BLM18SG121TN1D/490-3996-1-ND/1016256
+2309413-1,,M1,jetson-nano-connector,jetson-nano-new-release,1.81,1,1.81,https://www.digikey.com/product-detail/en/te-connectivity-amp-connectors/2309413-1/A126764CT-ND/7793548
+PMV32UP,"P CH, 20V, 4A",Q1,SOT-23s,PMOS,0.403,1,0.403,https://eu.mouser.com/ProductDetail/Nexperia/PMV32UP215?qs=A1cBxND5mHK0cGZgtPVs5w%3D%3D
+PMV16XN,"MOSFET, N CH",Q2,SOT-23s,NMOS_PMV16XN,0.444,1,0.444,https://eu.mouser.com/ProductDetail/Nexperia/PMV16XNR?qs=%252BRKXB2WKlSfp5fVW5DDV6w%3D%3D
+5R6,"RES, 5R6, 0402","R1, R2, R3, R4, R7, R8, R9, R10",402,R_5R6_0402,0.016,8,0.128,https://uk.farnell.com/panasonic/erj2gej5r6x/res-5r6-5-0-1w-0402-thick-film/dp/2324333
+2k,"RES, 2k, 0402","R5, R6, R11, R18, R22, R23, R24, R25, R27, R28, R29, R34, R35, R37, R55, R69, R70, R73, R81, R83, R88, R117, R118",402,R_2k_0402,0.1,23,2.3,https://www.digikey.com/product-detail/en/vishay-dale/CRCW04022K00FKED/541-2-00KLCT-ND/1183155
+0R,"RES, 0R, 0402","R12, R13, R15, R17, R19, R21, R39, R42, R47, R49, R56, R57, R58, R59, R60, R61, R62, R63, R64, R65, R66, R68, R71, R75, R82, R89, R91, R92, R98, R99, R103, R104, R105, R106, R107, R108, R109, R110, R120, R121, R122, R123, R124, R125, R126, R127, R129, R130, R132, R133, R136, R137, R138",402,R_0R_0402,0.1,53,5.3,https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-2GE0R00X/P0-0JCT-ND/146726
+470R,"RES, 470R, 0402","R14, R43, R97, R111",402,R_470R_0402,0.1,4,0.4,https://www.digikey.com/product-detail/en/vishay-dale/CRCW0402470RFKED/541-470LCT-ND/1183085
+1k,"RES, 1k, 0402","R16, R36, R87",402,R_1k_0402,0.1,3,0.3,https://www.digikey.com/product-detail/en/bourns-inc/CR0402-FX-1001GLF/CR0402-FX-1001GLFCT-ND/3592912
+22R,"RES, 22R, 0402","R20, R41",402,R_22R_0402,0.14,2,0.28,https://www.digikey.ca/en/products/detail/vishay-dale/CRCW040222R0FKED/1182931
+100k,SMT Resistor 100k 0402,"R26, R30, R77, R78, R100, R101, R112, R113, R119",402,R_100k_0402,0.13,9,1.17,https://www.digikey.com/product-detail/en/vishay-dale/CRCW0402100KFKEDHP/541-100KYCT-ND/2223051
+1M,SMT Resistor 1M 0402,"R31, R32",402,R_1M_0402,0.1,2,0.2,https://www.digikey.com/product-detail/en/vishay-dale/CRCW04021M00FKED/541-1-00MLCT-ND/1183465
+220R,"RES, 220R, 0402","R38, R40, R128",402,R_220R_0402,0.002,3,0.006,https://eu.mouser.com/ProductDetail/TE-Connectivity-Neohm/CRG0402J220R?qs=DfH2yQaBz6v2%2Fjcb9uh9uQ%3D%3D
+243k,"RES, 243k, 0402","R44, R134",402,R_243k_0402,0.015,2,0.03,https://www.newark.com/multicomp/mcmr04x2433ftl/surface-mount-thick-film-resistor/dp/86T3039
+49R9,"RES, 49R9, 0402",R45,402,R_49R9_0402,0.1,1,0.1,https://www.digikey.com/product-detail/en/vishay-dale/CRCW040249R9FKED/541-49-9LCT-ND/1182974
+53k6,"RES, 53k6, 0402","R46, R135",402,R_53k6_0402,0.65,2,1.3,https://www.digikey.com/product-detail/en/te-connectivity-passive-product/CPF0402B53K6E1/A102904CT-ND/2729437
+16k9,"RES, 16k9, 0402",R48,402,R_16k9_0402,0.305,1,0.305,https://www.newark.com/panasonic/era2aeb1692x/res-16k9-0-1-metal-film/dp/85Y5365
+10k2,"RES, 10k2, 0402, 0.1%","R50, R52",402,R_10k2_0402,0.65,2,1.3,https://www.digikey.com/product-detail/en/te-connectivity-passive-product/CPF0402B10K2E1/A102580CT-ND/2729113
+909k,"RES, 909k, 0402",R51,402,R_909k_0402,0.044,1,0.044,https://uk.farnell.com/panasonic/erj2rkf9093x/res-909k-1-0-1w-0402-thick-film/dp/2397497
+200k,"RES, 200k, 0402","R53, R67, R84, R86",402,R_200k_0402,0.1,4,0.4,https://www.digikey.com/product-detail/en/yageo/RC0402FR-07200KL/311-200KLRCT-ND/729505
+10k,"RES, 10k, 0402","R33, R54, R72, R76, R90, R93, R94, R95, R96, R102, R114, R115, R116, R131",402,R_10k_0402,0.064,14,0.896,https://www.newark.com/multicomp/mcmr04x1002ftl/surface-mount-chip-resistor-ceramic/dp/86T2769
+0R,"RES, 0R, 0805",R74,805,R_0R_0805,0.1,1,0.1,https://www.digikey.com/product-detail/en/bourns-inc/CR0805-J-000ELF/CR0805-J-000ELFCT-ND/3592913
+470k,SMT Resistor 470k 0402,R85,402,R_470k_0402,0.1,1,0.1,https://www.digikey.com/product-detail/en/vishay-dale/CRCW0402470KFKED/541-470KLCT-ND/1183427
+TL3340AF160QG,"E-SWITCH  TL3340AF160QG  SWITCH, TACTILE SPST 50mA, SMD GULL WING","REC, RST, USR",TL3340AF160QG,TL3340AF160QG,0.46,3,1.38,https://www.digikey.com/product-detail/en/e-switch/TL3340AF160QG/EG4627CT-ND/1885974
+9774060151,M2.5-6mm,"SP1, SP2, SP3, SP4, SP5, SP6",M2.5-6mm,SPACER,1.1,6,6.6,https://eu.mouser.com/ProductDetail/Wurth-Elektronik/9774060151R?qs=KRpiEsko4HliqbwqeZk1iQ%3D%3D
+BSS138PW,"MOSFET, N CH, 60V, 0.2A","T1, T2, T3, T4, T5",SC70-3,NMOS,0.22,5,1.1,https://www.digikey.com/product-detail/en/nexperia-usa-inc/BSS138PW-115/1727-1143-1-ND/4162472
+,,,,,,,,
+,,,,,,sum,141.961,
