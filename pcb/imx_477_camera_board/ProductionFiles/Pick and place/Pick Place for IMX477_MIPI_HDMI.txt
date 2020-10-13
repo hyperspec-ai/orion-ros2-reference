@@ -1,0 +1,71 @@
+Altium Designer Pick and Place Locations
+D:\UUUUP\RPICam-HDMI\IMX477Baord\IMX477HDMI\IMX477_MIPI_HDMI\Project Outputs for IMX477_MIPI_HDMI\Pick Place for IMX477_MIPI_HDMI.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       13/10/20
+Time:       00:47
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mm
+
+Designator  Comment          Layer       Footprint        Center-X(mm) Center-Y(mm) Rotation Description 
+J2          "Micro HDMI"     BottomLayer HDMI-0467650301  34.8975      20.0000      270      ""          
+Designator6 Comment          TopLayer    CN_LENS_J6370-MV 17.4790      19.8250      90       ""          
+Y1          24MHz            BottomLayer 3225-OSC         34.1180      27.9780      270      ""          
+U6          ""               BottomLayer SOT96P240X110-3N 28.0380      33.5120      90       ""          
+U5          AP3417C          BottomLayer SOT23-5-3D       3.8240       12.3450      90       ""          
+U4          AP7331-28WG      BottomLayer AP7331-sot-25    4.3890       26.9000      0        ""          
+U3          IMX477           TopLayer    IMX477           17.4820      19.8020      270      ""          
+U2          ATSHA204A-MAHCZ- BottomLayer ATSHA204A        31.2430      8.3330       90       ""          
+U1          AP7331-18WG      BottomLayer AP7331-sot-25    17.3600      35.5830      180      ""          
+R9          2.2K             BottomLayer RES-0402         27.0400      30.4640      90       ""          
+R8          1K               BottomLayer RES-0402         1.2310       8.8210       270      ""          
+R7          22R              BottomLayer RES-0402         24.7350      36.0130      270      ""          
+R6          2.2K             BottomLayer RES-0402         23.4760      36.0240      270      ""          
+R5          750R             BottomLayer RES-0402         1.2440       11.5420      270      ""          
+R4          2.2K             BottomLayer RES-0402         2.8730       23.6900      180      ""          
+R3          22R              BottomLayer RES-0402         30.7280      26.2890      270      ""          
+R2          2.2K             BottomLayer RES-0402         19.3520      26.7010      270      ""          
+R1          2.2K             BottomLayer RES-0402         23.5370      27.6990      90       ""          
+MOSFET3     DMG1024UV-7      BottomLayer SOT-563_DIO      3.4170       21.4650      90       ""          
+MOSFET2     DMG1024UV-7      BottomLayer SOT-563_DIO      26.5700      27.2110      180      ""          
+MOSFET1     DMG1024UV-7      BottomLayer SOT-563_DIO      21.3930      27.2060      180      ""          
+L1          4.7uH            BottomLayer IND-1008         5.7480       16.5790      90       Inductor    
+FL3         DLP11SN900HL2L   BottomLayer DLP11SN900HL2L   27.8170      15.6560      180      ""          
+FL2         DLP11SN900HL2L   BottomLayer DLP11SN900HL2L   27.7780      17.3100      180      ""          
+FL1         DLP11SN900HL2L   BottomLayer DLP11SN900HL2L   27.8370      13.8850      180      ""          
+FB2         BLM18AG601SN1    BottomLayer FBD-0603-S       6.8570       7.4770       180      Inductor    
+FB1         BLM18AG601SN1    BottomLayer FBD-0603-S       22.0160      35.7680      90       Inductor    
+C31         10nF             BottomLayer CAP-0402         28.5190      36.2940      0        Capacitor   
+C30         2.2uF            BottomLayer CAP-0603         3.8860       9.0610       180      Capacitor   
+C29         2.2uF            BottomLayer CAP-0603         3.8970       7.4910       180      Capacitor   
+C28         10uF             BottomLayer CAP-0805-S       6.4100       20.3790      90       Capacitor   
+C27         100nF            BottomLayer CAP-0402         17.8600      21.5800      180      Capacitor   
+C26         100nF            BottomLayer CAP-0402         15.7850      20.7720      270      Capacitor   
+C25         100nF            BottomLayer CAP-0402         16.1060      18.7170      90       Capacitor   
+C24         100nF            BottomLayer CAP-0402         15.0060      18.7120      90       Capacitor   
+C23         2.2uF            BottomLayer CAP-0603         14.5510      21.1400      270      Capacitor   
+C22         100nF            BottomLayer CAP-0402         12.3990      21.7970      270      Capacitor   
+C21         100nF            BottomLayer CAP-0402         22.8410      18.1840      360      Capacitor   
+C20         1uF              BottomLayer CAP-0402         12.3500      16.2180      270      Capacitor   
+C19         2.2uF            BottomLayer CAP-0603         25.0110      22.7800      270      Capacitor   
+C18         100nF            BottomLayer CAP-0402         12.4020      19.2740      90       Capacitor   
+C17         100nF            BottomLayer CAP-0402         20.3280      16.5620      180      Capacitor   
+C16         100nF            BottomLayer CAP-0402         17.6480      19.2000      180      Capacitor   
+C15         100nF            BottomLayer CAP-0402         17.6370      20.2980      180      Capacitor   
+C14         100nF            BottomLayer CAP-0402         22.3510      20.9140      90       Capacitor   
+C13         100nF            BottomLayer CAP-0402         22.3820      23.0410      270      Capacitor   
+C12         100nF            BottomLayer CAP-0402         17.3420      25.7580      180      Capacitor   
+C11         1uF              BottomLayer CAP-0402         7.5130       26.4580      90       Capacitor   
+C10         1uF              BottomLayer CAP-0402         1.2140       26.4770      90       Capacitor   
+C9          100nF            BottomLayer CAP-0402         12.4020      23.9930      90       Capacitor   
+C8          2.2uF            BottomLayer CAP-0603         23.6440      22.7750      270      Capacitor   
+C7          100nF            BottomLayer CAP-0402         33.3290      8.3720       270      Capacitor   
+C6          1uF              BottomLayer CAP-0402         13.4250      36.5420      180      Capacitor   
+C5          1uF              BottomLayer CAP-0402         22.5120      37.9400      360      Capacitor   
+C4          1uF              BottomLayer CAP-0402         37.0310      27.8700      270      Capacitor   
+C3          2.2uF            BottomLayer CAP-0603         13.3550      25.8900      180      Capacitor   
+C2          2.2uF            BottomLayer CAP-0603         13.3130      27.3060      180      Capacitor   
+C1          1uF              BottomLayer CAP-0402         20.7090      21.6120      270      Capacitor   

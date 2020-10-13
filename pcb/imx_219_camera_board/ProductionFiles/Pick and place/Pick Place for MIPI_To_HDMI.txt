@@ -1,0 +1,41 @@
+Altium Designer Pick and Place Locations
+D:\UUUUP\RPICam-HDMI\IMX219Board\IMX219_MIPI_HDMI\Project Outputs for IMX219_MIPI_HDMI\Pick Place for MIPI_To_HDMI.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       13/10/20
+Time:       00:58
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mm
+
+Designator Comment          Layer       Footprint       Center-X(mm) Center-Y(mm) Rotation Description 
+J2         "Micro HDMI"     BottomLayer HDMI-0467650301 4.8825       13.9270      90       ""          
+C1         1uF              BottomLayer CAP-0402        19.7110      16.8960      90       Capacitor   
+C2         1uF              BottomLayer CAP-0402        22.3838      16.6160      90       Capacitor   
+C3         1uF              BottomLayer CAP-0402        23.5960      12.3851      270      Capacitor   
+C4         1uF              BottomLayer CAP-0402        19.9800      6.1420       90       Capacitor   
+C5         1uF              BottomLayer CAP-0402        11.9620      19.8400      360      Capacitor   
+C6         1uF              BottomLayer CAP-0402        14.3280      19.8200      180      Capacitor   
+C7         100nF            BottomLayer CAP-0402        13.9700      7.4420       360      Capacitor   
+C8         4.7uF            BottomLayer CAP-0603        9.6637       5.0439       180      Capacitor   
+C9         10uF             BottomLayer CAP-0805-S      19.7310      2.4780       270      Capacitor   
+C10        1uF              BottomLayer CAP-0402        17.6020      19.6800      360      Capacitor   
+C11        1uF              BottomLayer CAP-0402        19.8320      19.6800      180      Capacitor   
+FB1        BLM18AG601SN1    BottomLayer FBD-0603-S      5.2420       20.4620      360      Inductor    
+FB2        BLM18AG601SN1    BottomLayer FBD-0603-S      9.5505       6.8420       360      Inductor    
+FL1        DLP11SN900HL2L   BottomLayer DLP11SN900HL2L  11.5570      16.1080      360      ""          
+FL2        DLP11SN900HL2L   BottomLayer DLP11SN900HL2L  11.5570      14.1080      360      ""          
+FL3        DLP11SN900HL2L   BottomLayer DLP11SN900HL2L  11.5570      11.9929      360      ""          
+J1         DF37NC30DS04V51  TopLayer    DF37NC30DS04V51 22.3520      13.9270      90       ""          
+L1         2.2uH            BottomLayer IND-1008        17.4089      2.4780       90       Inductor    
+MOSFET1    DMG1024UV-7      BottomLayer SOT-563_DIO     16.5580      10.0709      180      ""          
+R1         2.2K             BottomLayer RES-0402        17.1450      11.8771      360      ""          
+R2         2.2K             BottomLayer RES-0402        16.6370      7.9500       180      ""          
+R3         22R              BottomLayer RES-0402        23.2399      9.4080       180      ""          
+U1         AP7331-18WG      BottomLayer AP7331-sot-25   13.8500      22.2400      360      ""          
+U2         ATSHA204A-MAHCZ- BottomLayer ATSHA204A       12.1660      9.3590       360      ""          
+U3         PAM2301CAAB120   BottomLayer PAM2301CAAB120  13.6148      3.8590       90       ""          
+U4         AP7331-28WG      BottomLayer AP7331-sot-25   18.5200      22.2900      360      ""          
+Y1         24MHz            BottomLayer 3225-OSC        22.5790      6.3989       90       ""          

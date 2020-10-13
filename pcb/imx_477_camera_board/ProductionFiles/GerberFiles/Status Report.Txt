@@ -1,0 +1,34 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [IMX477_MIPI_HDMI.PrjPcb]
+   Generated File[IMX477_MIPI_HDMI.GTO]
+   Generated File[IMX477_MIPI_HDMI.GTP]
+   Generated File[IMX477_MIPI_HDMI.GTS]
+   Generated File[IMX477_MIPI_HDMI.GTL]
+   Generated File[IMX477_MIPI_HDMI.G1]
+   Generated File[IMX477_MIPI_HDMI.G2]
+   Generated File[IMX477_MIPI_HDMI.GBL]
+   Generated File[IMX477_MIPI_HDMI.GBS]
+   Generated File[IMX477_MIPI_HDMI.GBP]
+   Generated File[IMX477_MIPI_HDMI.GBO]
+   Generated File[IMX477_MIPI_HDMI.GM1]
+   Generated File[IMX477_MIPI_HDMI.GM2]
+   Generated File[IMX477_MIPI_HDMI.GM3]
+   Generated File[IMX477_MIPI_HDMI.GM7]
+   Generated File[IMX477_MIPI_HDMI.GM9]
+   Generated File[IMX477_MIPI_HDMI.GM11]
+   Generated File[IMX477_MIPI_HDMI.GM13]
+   Generated File[IMX477_MIPI_HDMI.GM15]
+   Generated File[IMX477_MIPI_HDMI.GM46]
+   Generated File[IMX477_MIPI_HDMI.GKO]
+   Generated File[IMX477_MIPI_HDMI.GPT]
+   Generated File[IMX477_MIPI_HDMI.GPB]
+   Generated File[IMX477_MIPI_HDMI.RUL]
+   Generated File[IMX477_MIPI_HDMI.EXTREP]
+   Generated File[IMX477_MIPI_HDMI.REP]
+
+
+Files Generated   : 25
+Documents Printed : 0
+
+Finished Output Generation At 0:45:27 On 2020/10/13

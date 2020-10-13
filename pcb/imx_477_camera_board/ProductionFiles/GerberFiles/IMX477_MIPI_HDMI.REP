@@ -1,0 +1,407 @@
+*************************************************************
+FileName = IMX477_MIPI_HDMI.GBR
+AutoAperture = True
+*************************************************************
+Generating : Mechanical 46
+      File : IMX477_MIPI_HDMI.GM46
+
+    Adding Layer      : Mechanical 46
+
+
+Used DCodes :
+    D75
+    D80
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : IMX477_MIPI_HDMI.GBO
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+    D10
+    D14
+    D23
+    D25
+    D73
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : IMX477_MIPI_HDMI.GTS
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D17
+    D18
+    D19
+    D20
+    D21
+*************************************************************
+
+*************************************************************
+Generating : Top Pad Master
+      File : IMX477_MIPI_HDMI.GPT
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D26
+    D27
+    D28
+*************************************************************
+
+*************************************************************
+Generating : Layer 2
+      File : IMX477_MIPI_HDMI.G2
+
+    Adding Layer      : Layer 2
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D22
+    D24
+    D25
+    D27
+    D29
+    D30
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 15
+      File : IMX477_MIPI_HDMI.GM15
+
+    Adding Layer      : Mechanical 15
+
+
+Used DCodes :
+    D14
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 11
+      File : IMX477_MIPI_HDMI.GM11
+
+    Adding Layer      : Mechanical 11
+
+
+Used DCodes :
+    D79
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 9
+      File : IMX477_MIPI_HDMI.GM9
+
+    Adding Layer      : Mechanical 9
+
+
+Used DCodes :
+    D10
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 7
+      File : IMX477_MIPI_HDMI.GM7
+
+    Adding Layer      : Mechanical 7
+
+
+Used DCodes :
+    D76
+    D77
+    D78
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 3
+      File : IMX477_MIPI_HDMI.GM3
+
+    Adding Layer      : Mechanical 3
+
+
+Used DCodes :
+    D76
+    D77
+    D78
+    D79
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 1
+      File : IMX477_MIPI_HDMI.GM1
+
+    Adding Layer      : Mechanical 1
+
+
+Used DCodes :
+    D74
+*************************************************************
+
+*************************************************************
+Generating : Bottom Paste
+      File : IMX477_MIPI_HDMI.GBP
+
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D31
+    D32
+    D33
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
+    D43
+    D44
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : IMX477_MIPI_HDMI.GTP
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : IMX477_MIPI_HDMI.GBL
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
+    D43
+    D44
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : IMX477_MIPI_HDMI.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+*************************************************************
+
+*************************************************************
+Generating : Layer 1
+      File : IMX477_MIPI_HDMI.G1
+
+    Adding Layer      : Layer 1
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D22
+    D27
+    D29
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 13
+      File : IMX477_MIPI_HDMI.GM13
+
+    Adding Layer      : Mechanical 13
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 2
+      File : IMX477_MIPI_HDMI.GM2
+
+    Adding Layer      : Mechanical 2
+
+
+Used DCodes :
+    D10
+    D75
+*************************************************************
+
+*************************************************************
+Generating : Keep-Out Layer
+      File : IMX477_MIPI_HDMI.GKO
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+    D14
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : IMX477_MIPI_HDMI.GBS
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D19
+    D20
+    D21
+    D52
+    D53
+    D54
+    D55
+    D56
+    D57
+    D58
+    D59
+    D60
+    D61
+    D62
+    D63
+    D64
+    D65
+    D66
+    D67
+    D68
+    D69
+    D70
+    D71
+    D72
+*************************************************************
+
+*************************************************************
+Generating : Bottom Pad Master
+      File : IMX477_MIPI_HDMI.GPB
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D26
+    D27
+    D28
+    D31
+    D32
+    D33
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
+    D43
+    D44
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+*************************************************************
+
+*************************************************************
+Generating : Top Layer
+      File : IMX477_MIPI_HDMI.GTL
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+*************************************************************
+

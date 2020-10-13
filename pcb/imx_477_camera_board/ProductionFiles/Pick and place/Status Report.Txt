@@ -1,0 +1,10 @@
+Output: Generates pick and place files
+Type  : Pick Place
+From  : Variant [[No Variations]] of Project [IMX477_MIPI_HDMI.PrjPcb]
+   Generated File[Pick Place for IMX477_MIPI_HDMI.txt]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 0:47:08 On 2020/10/13

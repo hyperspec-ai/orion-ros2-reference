@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [IMX477_MIPI_HDMI.PrjPcb]
+   Generated File[IMX477_MIPI_HDMI.TXT]
+   Generated File[IMX477_MIPI_HDMI.LDP]
+   Generated File[IMX477_MIPI_HDMI.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 0:46:35 On 2020/10/13
