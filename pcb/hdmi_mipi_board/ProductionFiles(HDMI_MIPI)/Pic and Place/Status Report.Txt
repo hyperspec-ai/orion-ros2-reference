@@ -1,0 +1,10 @@
+Output: Generates pick and place files
+Type  : Pick Place
+From  : Variant [[No Variations]] of Project [HDMI_To_MIPI.PrjPcb]
+   Generated File[Pick Place for HDMI_To_MIPI.txt]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 10:10:31 On 2020/10/30

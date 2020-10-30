@@ -1,0 +1,24 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [HDMI_To_MIPI.PrjPcb]
+   Generated File[HDMI_To_MIPI.GTO]
+   Generated File[HDMI_To_MIPI.GTP]
+   Generated File[HDMI_To_MIPI.GTS]
+   Generated File[HDMI_To_MIPI.GTL]
+   Generated File[HDMI_To_MIPI.GBL]
+   Generated File[HDMI_To_MIPI.GBS]
+   Generated File[HDMI_To_MIPI.GM1]
+   Generated File[HDMI_To_MIPI.GM3]
+   Generated File[HDMI_To_MIPI.GM7]
+   Generated File[HDMI_To_MIPI.GKO]
+   Generated File[HDMI_To_MIPI.GPT]
+   Generated File[HDMI_To_MIPI.GPB]
+   Generated File[HDMI_To_MIPI.RUL]
+   Generated File[HDMI_To_MIPI.EXTREP]
+   Generated File[HDMI_To_MIPI.REP]
+
+
+Files Generated   : 15
+Documents Printed : 0
+
+Finished Output Generation At 10:08:30 On 2020/10/30

@@ -1,0 +1,16 @@
+Altium Designer Pick and Place Locations
+D:\UUUUP\RPICam-HDMI\IMX477Baord\IMX477HDMI\IMX477_HDMI_MIPI\Project Outputs for HDMI_To_MIPI\Pick Place for HDMI_To_MIPI.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       30/10/20
+Time:       10:10
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mil
+
+Designator Comment           Layer    Footprint               Center-X(mil) Center-Y(mil) Rotation Description 
+J3         HEADER3           TopLayer 1.0-3-SMD               529.370       1063.484      0        ""          
+J1         HDMI              TopLayer 2000124100BK            866.775       625.000       90       ""          
+J2         "SFW 15R-1STE1LF" TopLayer AMPHENOL_SFW15R-1STE1LF 228.660       605.630       270      ""          

@@ -1,0 +1,6 @@
+DRC Rules Export File for PCB: D:\UUUUP\RPICam-HDMI\IMX477Baord\IMX477HDMI\IMX477_HDMI_MIPI\HDMI_To_MIPI.PcbDoc
+RuleKind=Clearance|RuleName=Clearance_1|Scope=Board|Minimum=11.81
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=5.91
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=10.00
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0

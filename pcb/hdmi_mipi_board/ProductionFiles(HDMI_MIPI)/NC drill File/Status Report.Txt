@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [HDMI_To_MIPI.PrjPcb]
+   Generated File[HDMI_To_MIPI.TXT]
+   Generated File[HDMI_To_MIPI.LDP]
+   Generated File[HDMI_To_MIPI.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 10:09:34 On 2020/10/30
