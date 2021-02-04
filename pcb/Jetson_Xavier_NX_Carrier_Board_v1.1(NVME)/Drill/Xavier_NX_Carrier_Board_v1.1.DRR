@@ -1,0 +1,32 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Xavier_NX_Carrier_Board_v1.1.PcbDoc   2/4/2021  6:29:11 AM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : TOP to BOTTOM
+ASCII RoundHoles File : Xavier_NX_Carrier_Board_v1.1-RoundHoles.TXT
+ASCII SlotHoles File : Xavier_NX_Carrier_Board_v1.1-SlotHoles.TXT
+EIA File   : Xavier_NX_Carrier_Board_v1.1.DRL
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      0.254mm (10mil)                                           Round             857       PTH        0.00mm (0.00inch)
+T2      0.4mm (16mil)                                             Round             34        PTH        0.00mm (0.00inch)
+T3      0.6mm (24mil)                                             Slot              8         PTH        0.00mm (0.00inch)
+T4      0.64mm (25mil)                                            Round             4         PTH        0.00mm (0.00inch)
+T5      0.7mm (28mil)                                             Slot              2         PTH        0.00mm (0.00inch)
+T6      0.89mm (35mil)                                            Round             10        PTH        0.00mm (0.00inch)
+T7      0.9mm (35mil)                                             Round             7         PTH        0.00mm (0.00inch)
+T8      0.9mm (35mil)                                             Slot              2         PTH        0.00mm (0.00inch)
+T9      1mm (39mil)                                               Round             2         PTH        0.00mm (0.00inch)
+T10     1mm (39mil)                                               Slot              3         PTH        0.00mm (0.00inch)
+T11     1.02mm (40mil)                                            Round             6         PTH        0.00mm (0.00inch)
+T12     1.7mm (67mil)                                             Round             2         PTH        0.00mm (0.00inch)
+T13     3.7mm (146mil)                                            Round             6         PTH        0.00mm (0.00inch)
+T14     3.8mm (150mil)                                            Round             2         PTH        0.00mm (0.00inch)
+T15     1.1mm (43mil)                                             Round             3         NPTH       0.00mm (0.00inch)
+T16     1.6mm (63mil)                                             Round             3         NPTH       0.00mm (0.00inch)
+T17     3.25mm (128mil)                                           Round             2         NPTH       0.00mm (0.00inch)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              953
+
+Total Processing Time (hh:mm:ss) : 00:00:01
