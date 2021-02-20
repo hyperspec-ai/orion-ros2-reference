@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: E:\task_progress\jetson_xavier_nx_baseboard_202010_Srvan\Jetson_Xavier_NX_Carrier_Board_v1.1\Jetson_Xavier_NX_Carrier_Board_v1.1\Xavier_NX_Carrier_Board_v1.1.PcbDoc
+LayersSetName=Top_Bot_Thru_Holes|DrillFile=xavier_nx_carrier_board_v1.1-roundholes.txt|DrillLayers=gtl,gp1,gp2,g1,gp3,gbl
+LayersSetName=Top_Bot_Slot_Holes|DrillFile=xavier_nx_carrier_board_v1.1-slotholes.txt|DrillLayers=gtl,gp1,gp2,g1,gp3,gbl
